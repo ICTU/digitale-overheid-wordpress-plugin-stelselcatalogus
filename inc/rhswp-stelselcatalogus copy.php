@@ -2,10 +2,10 @@
 /*
  * owmsvelden. 
  *
- * Plugin Name:   ICTU / Plugin voor interactieve stelselplaat
+ * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.1
+ * Version:       0.0.2
  * Version desc:  eerste versie
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
@@ -31,7 +31,7 @@ class Stelselplaat {
     /**
      * @var string
      */
-    public $version = '0.0.1';
+    public $version = '0.0.2';
 
 
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>geo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="geo" stroke="#000000">
+            <g transform="translate(1.000000, 1.000000)">
+                <circle id="Oval" cx="10" cy="9.75609756" r="9.75609756"></circle>
+                <ellipse id="Oval" cx="10" cy="9.75609756" rx="6.09756098" ry="9.75609756"></ellipse>
+                <path d="M0.183641387,9.84875191 L19.8959127,9.84875191" id="Path-2"></path>
+                <path d="M1.18364139,5 L18.4,5" id="Path-2"></path>
+                <path d="M10.1766149,0.0427543826 L9.95938929,19.8033775" id="Path-2"></path>
+                <path id="Path-2"></path>
+            </g>
+            <path d="M2.5,16 L19,16" id="Path-2"></path>
+        </g>
+    </g>
+</svg>

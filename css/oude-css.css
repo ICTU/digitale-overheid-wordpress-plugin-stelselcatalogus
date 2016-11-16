@@ -1,0 +1,636 @@
+div#kolom2 .stelsel
+{
+    position: relative;
+    height: 500px;
+    margin: 0 20px 0 0;
+    border: 1px solid #eee;
+}
+
+div#kolom2 .stelsel>li
+{
+    padding: 0;
+    background: none;
+    position: absolute;
+    display: block;
+    width: 145px;
+    height: 125px;
+    text-align: center;
+}
+
+div#kolom2 .stelsel li strong
+{
+    display: block;
+    margin-top: .5em;
+}	.stelsel li em+strong
+     {
+         margin-top: 0;
+     }
+
+div#kolom2 .stelsel .popup p
+{
+    color: #000;
+    margin: 0;
+    padding: 10px;
+}
+
+div#kolom2 .stelsel .relaties {
+    top: 0;
+    left: 0;
+}
+
+div#kolom2  .stelsel>li>a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+div.stelselplaat .stelsel>li>a:hover {
+    text-decoration: none;
+}
+
+div#kolom2 .stelsel .nietgereed, div#kolom2 .stelsel .nietgereed .ik, div#kolom2 .zij a.nietgereed, div#kolom2 .legenda .nietgereed span, div#kolom2 .mod.box ul li.nietgereed, div#kolom2 .br ul li.nietgereed {
+    background: #f9e11e;
+    color: #000;
+}
+
+div#kolom2 .stelsel .nietgereed>a, .stelsel .nietgereed .ik h3, .zij a.nietgereed {
+    color: #000 !important;
+}
+
+div#kolom2 .stelsel .gereed, div#kolom2 .stelsel .gereed .ik, div#kolom2 .zij a.gereed, div#kolom2 .legenda .gereed span, div#kolom2 .mod.box ul li.gereed, div#kolom2 .br ul li.gereed {
+    background: #39870c;
+    color: #fff;
+}
+
+.stelsel .gereed>a, .stelsel .gereed .ik h3, div#kolom2 .zij a.gereed {
+    color: #fff !important;
+}
+
+/* Popup */
+.popup {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    text-align: left;
+    overflow: hidden;
+    font-size: 11px;
+}
+/* Alternative border for the box-shadow of the pop-up for compatibility with CSS 2 */
+
+div#kolom2 .gereed .mod.box.popup {
+    border-color: #39870c;
+}
+
+div#kolom2 .nietgereed .mod.box.popup {
+    border-color: #F9E11E;
+}
+
+
+.gereed div.mod.box.popup h2, .gereed div.mod.box.popup h3 {
+    background: #c3dbb6;
+}
+
+.gereed div.mod.box.popup {
+    background: #e1eddb;
+}
+
+.nietgereed div.mod.box.popup h2, .nietgereed div.mod.box.popup h3 {
+    background: #fdf6bb;
+}
+
+.nietgereed div.mod.box.popup {
+    background: #fefbdd;
+}
+
+.shield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 8;
+    background: url(../images/white-80.png) repeat scroll 0 0 transparent !important;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px 8px 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background: #275937;
+    text-align: center;
+    color: #000 !important;
+    margin: 4px;
+}
+
+.close:hover, .gereed .close:hover, .nietgereed .close:hover{
+    text-decoration: none;
+    color: #000 !important;
+    background: none !important;
+}
+
+.gereed .close {
+    background: #39870c;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.nietgereed .close {
+    text-decoration: none;
+    background: #f9e11e;
+    color: #000 !important;
+}
+
+/* Detailplaten in popup */
+
+.ik {
+    background: #eee;
+    margin: 0;
+    display: inline-block;
+    width: 200px;
+    height: 275px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.ik h3 {
+    background: none !important;
+    padding-bottom: 0 !important;
+}
+
+div#kolom2 .br .ik li, div#kolom2 .mod.box .ik li {
+    padding: 0;
+    background: #fff;
+    display: block;
+    color: #000;
+    margin-bottom: 3px;
+}
+
+div#kolom2 .br .ik li, div#kolom2 .br .zij a, div#kolom2 .mod.box .ik li, div#kolom2 .mod.box .zij a {
+    padding: 3px 10px;
+    display: block;
+}
+
+div#kolom2 .br .ik li ul, div#kolom2 .mod.box .ik li ul {
+    padding: 0 !important;
+}
+
+div#kolom2 .br .ik li li, div#kolom2 .mod.box .ik li li {
+    border: 1px solid #ccc;
+}
+
+.zij {
+    vertical-align: top;
+    display: inline-block;
+    color: #000;
+    width: 200px;
+    margin:0;
+    padding: 0;
+}
+
+.zij h3 {
+    margin-bottom: 20px !important;
+    text-align: center;
+}
+
+div#kolom2 .br .zij>ul>li, .zij>ul>li, div#kolom2 .mod.box .zij>ul>li {
+    width: 60px;
+    padding: 0 20px 0 0;
+    background: none !important;
+    height: 12px;
+    float: right;
+    position: relative;
+    margin: 0 0 16px 25px;
+}
+
+div#kolom2 .br .zij>ul>li:hover a, div#kolom2 .mod.box .zij>ul>li:hover a {
+    padding-left: 25px;
+}
+
+div#kolom2 .br .zij>ul>li:hover, div#kolom2 .mod.box .zij>ul>li:hover {
+    width: 75px;
+}
+
+div#kolom2 .br .zij>ul>li:hover ul, div#kolom2 .mod.box .zij>ul>li:hover ul {
+    right: 95px;
+}
+
+div#kolom2 .br .ik + .zij>ul>li:hover a, div#kolom2 .mod.box .ik + .zij>ul>li:hover a {
+    padding-left: 10px;
+}
+
+div#kolom2 .br .ik + .zij>ul>li:hover ul, div#kolom2 .mod.box .ik + .zij>ul>li:hover ul {
+    right: auto;
+    left: 95px;
+}
+
+div#kolom2 .br .ik + .zij>ul>li, div#kolom2 .mod.box .ik + .zij>ul>li {
+    padding-left: 20px;
+    padding-right: 0;
+    float: left;
+    margin: 0 25px 16px 0;
+}
+
+.geometrie {
+    float:right;
+    margin-top:-1px;
+    margin-right: -6px;
+}
+
+.zij>ul {
+    padding: 0 !important;
+}
+
+.zij ul ul {
+    position: absolute;
+    right: 75px;
+    padding: 0 4px !important;
+    top: 0;
+    background: #fff;
+    color: #000;
+    font-size: 1em;
+    border: 1px solid #CCC;
+    display: none;
+    width: 90px;
+}
+
+.zij li:hover ul {
+    display: block;
+    z-index: 9;
+}
+
+.ik + .zij ul ul {
+    left: 75px;
+}
+
+div#kolom2 .mod.box .zij ul ul li {
+    background: none;
+    padding: 3px;
+    margin: 0;
+}
+
+.zij>ul>li.gereed {
+    border-bottom: 2px solid #39870c;
+}
+
+.zij>ul>li.nietgereed {
+    border-bottom: 2px solid #f9e11e;
+}
+
+.leverancier {
+    text-align: center;
+}
+
+.leverancier li {
+    padding: 5px 10px;
+    display: inline-block;
+    width: 90px;
+    vertical-align: top;
+    position: relative;
+}
+
+.leverancier li em {
+    position: absolute;
+    background: #EEE;
+    color: #333;
+    margin-top: 5px;
+    display: none;
+    left: 0;
+    padding: 2px 5px;
+    border: 1px solid #AAA;
+    font-size: 0.85em;
+    width: 98px;
+    font-style: normal;
+}
+
+.leverancier li:hover em {
+    display: block;
+    z-index: 99;
+}
+
+/* Legenda */
+
+div#kolom2 .legenda {
+    vertical-align: top;
+    background: #eee;
+    padding: 10px;
+}
+
+div#kolom2 .legenda li {
+    background: none;
+    padding-left: 25px;
+    position: relative;
+}
+
+div#kolom2 .legenda span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+}
+
+li div.popup {
+    font-size: 1.6em;
+}
+
+/* Reset the top-margin to hide the enlarged basisregistatie li-item */
+div#kolom2 .mod.box.popup {
+    margin-top: 0;
+}
+/* Fix issue with nested li items. em is applied each time. */
+div#kolom2 div.br ul li li, div#kolom2 div.mod.box ul li li, div#kolom2 div.br ul li {
+    font-size: 12px;
+}
+
+div#kolom2 .mod.box .zij ul ul li {
+    margin-bottom:0;
+}
+
+div#kolom2 div.br ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 10px;
+}
+#container div.br h3 {
+    margin-bottom: 0.4343em;
+    margin-top: 1em;
+}
+
+div#kolom2 .popup h2 {
+    color: black;
+    font-weight: normal;
+}
+
+div#kolom2 .leverancier h3, div#kolom2 .begrip h3, div#kolom2 .gegevens h3  {
+    color: black;
+}
+
+div#kolom2 div#page.stelselplaat {
+    width:910px;
+}
+div#kolom2 ul.legenda {
+    list-style-type: none;
+    float: right;
+    margin-right:20px;
+}
+div#kolom2 ul.legenda li {
+    margin-bottom: 0.5em;
+    height: 20px;
+    line-height: 20px;
+}
+
+div#kolom2 ul.legenda li.gereed {
+    background: url('../images/legenda.png') no-repeat left top;
+}
+
+div#kolom2 ul.legenda li.nietgereed {
+    background: url('../images/legenda.png') no-repeat left center;
+}
+
+div#kolom2 ul.legenda li.legenda_geo {
+    background: url('../images/legenda.png') no-repeat left bottom;
+}
+
+div.stelselplaat a {
+    text-decoration:none;
+}
+
+div.stelselplaat ul a:hover, div.stelselplaat ul a:visited:hover {
+    text-decoration: underline;
+}
+
+/* tans style*/
+
+.tabs {
+    clear: left;
+    margin: -15px 0 0 !important;
+    padding: 10px 0 32px 50px !important;
+}
+.gereed .tabs {
+    background: none repeat scroll 0 0 #C3DBB6;
+    border-bottom: 1px solid #39870C;
+}
+.nietgereed .tabs {
+    background: none repeat scroll 0 0 #FDF6BB;
+    border-bottom: 1px solid #F9E11E;
+}
+
+div#kolom2 .mod.box ul.tabs  li {
+    background-image: none;
+    float: left;
+    font: 1em arial,helvetica,univers,sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.tabs a:visited {
+    color: #154273;
+}
+.tabs a {
+    color: #154273;
+    display: block;
+    height: 25px;
+    padding: 7px 15px 0;
+    text-decoration: none;
+}
+
+.tabs .active a {
+    background: url("../images/bg-tab-active.png") no-repeat scroll 100% 0 transparent;
+    color: black;
+    font-weight: bold;
+    margin-right: -8px;
+    padding: 7px 22px 0 10px;
+    text-decoration: none;
+}
+
+.tab .unit li {
+    font-size: 0.9em;
+}
+
+div#kolom2 .mod.box .tab div.begrip {
+    clear:left;
+}
+
+div#kolom2 .mod.box .tab ul.begrippen li {
+    float: left;
+    width: 178px;
+}
+
+div#kolom2 .mod.box .tab ul.authentiekegegevens li, div#kolom2 .mod.box .tab ul.gegevens li  {
+    float: left;
+    width: 278px;
+}
+
+
+div#kolom2 .stelsel .gereed .zie_ook ul {
+    color: #000000;
+}
+
+div#kolom2 .mod.box .zie_ook ul li.external_link, div#kolom2 .zie_ook ul li.external_link {
+    background: url("../images/directpijl.gif") no-repeat scroll 0 -3px transparent;
+
+}
+div#kolom2 ul.begrippen li, div#kolom2 ul.authentiekegegevens li, div#kolom2 .zie_ook ul li {
+    background: url("../images/blauwepijl.gif") no-repeat scroll 0 -3px transparent;
+    margin-bottom: 0.5em;
+    padding-left: 11px;
+}
+
+div#kolom2 .stelsel .gereed .zie_ook,
+div#kolom2 .stelsel .gereed .extra_tab {
+    color: #000000;
+}
+div#kolom2 .stelsel .mod.box ol {
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+div#kolom2 div.begrippen-filter {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    z-index: 9;
+    background-color: #dfe6e1;
+    border: 1px solid #becdc3;
+    border-top: 0;
+    padding: 0;
+}
+
+div#kolom2 div.begrippen-filter h2 {
+    background-color: #becdc3;
+    margin: 0;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.2;
+}
+div#kolom2 div.begrippen-filter h2:hover {
+    cursor: pointer;
+    background: #275937;
+}
+
+div#kolom2 div.begrippen-filter h2 a,
+div#kolom2 div.begrippen-filter h2 a:hover,
+div#kolom2 div.begrippen-filter h2 a:visited,
+div#kolom2 div.begrippen-filter h2 a:visited:hover {
+    color:black;
+    text-decoration: none;
+}
+
+div#kolom2 div.begrippen-filter p {
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+div#kolom2 div.begrippen-filter ul {
+    list-style-type: none;
+    line-height: 1.2;
+    list-style-position: outside;
+    margin: 0;
+    padding: 10px;
+}
+
+div#kolom2 div.begrippen-filter ul li {
+    text-align: left;
+    background: #becdc3;
+    padding: 0;
+    display: block;
+    color: #000 !important;
+    margin-bottom: 0.5em;
+}
+
+div#kolom2 div.begrippen-filter ul li a {
+    text-align: left;
+    background: #becdc3;
+    padding: 5px;
+    display: block;
+    color: #000 !important;
+    text-decoration: none !important;
+    line-height: 1.6;
+}
+
+div#kolom2 div.begrippen-filter ul li a.active {
+    background: #275937;
+}
+
+div#kolom2 div.begrippen-filter ul li a:hover {
+    text-decoration: none !important;
+    font-weight: bold;
+}
+.object {
+    color: #000;
+    font-family: Verdana, Arial, sans-serif;
+    position: relative;
+    top: -85px;
+    background: #EEE;
+    padding: 2px;
+    border: 2px solid #999;
+    border-width: 0 3px 3px;
+    border-style: solid;
+}
+
+.gereed .object {
+    border-color: #39870C;
+}
+
+.nietgereed .object {
+    border-color: #f9e11e;
+}
+/* Set style to float for IE 8*/
+.zij {
+    float:left;
+}
+.ik {
+    float:left;
+}
+
+.leverancier {
+    clear:both;
+}
+
+div.popup div.statusDoorlevering, div.popup .statusBasisregistratie, div.popup .zij li:hover div.statusVerbinding, .zij div.statusVerbinding  {
+    display: none;
+}
+
+div.statusDoorlevering, div.statusVerbinding {
+    font-size:10px;
+}
+
+.zij li div.statusVerbinding {
+    position:absolute;
+    padding: 2px;
+    text-align: center;
+    margin-top: 2px;
+    border: 1px solid #eee;
+}
+.zij li.gereed  div.statusVerbinding {
+    background-color: #39870C;
+    width: 120px;
+}
+
+.zij li.nietgereed  div.statusVerbinding {
+    background-color: #f9e11e;
+    width: 140px;
+}
+
+.zij li:hover div.statusVerbinding {
+    display: block;
+}
+
+.zij div.statusVerbinding {
+    margin-left: 80px;
+}
+/* Second block with items requires different margins. */
+div#kolom2 .ik + .zij li.nietgereed div.statusVerbinding {
+    margin-left: -152px;
+}
+
+div#kolom2 .ik + .zij li.gereed div.statusVerbinding {
+    margin-left: -132px;
+}

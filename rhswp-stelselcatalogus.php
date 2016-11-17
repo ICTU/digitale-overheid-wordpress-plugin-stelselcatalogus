@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.2
- * Version desc:  eerste versie
+ * Version:       0.0.3
+ * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -80,9 +80,32 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
   		$this->templates = array(
   			'stelselcatalogus-template.php' => 'Stelselplaat',
   		);
-  			
+
+
+      // options page 
+      if( function_exists('acf_add_options_page') ):
+      
+      	$args = array(
+      		'slug' => 'stelselplaatinstellingen',
+      		'title' => __( 'Instellingen stelselplaat', 'wp-rijkshuisstijl' ),
+      		'parent' => 'themes.php'
+      	); 
+      	
+      		acf_add_options_page($args);
+      
+      endif;
+
+//      add_filter('upload_mimes', 'cc_mime_types');
+			
   	} 
   
+
+
+  	public function cc_mime_types($mimes) {
+      $mimes['svg'] = 'image/svg+xml';
+      return $mimes;
+    }
+
   
   	/**
   	 * Adds our template to the pages cache in order to trick WordPress

@@ -7,8 +7,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.2
- * Version desc:  eerste versie
+ * Version:       0.0.3
+ * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -27,7 +27,6 @@ if ( is_page( ) ) {
   // Add hook for front-end <head></head>
   add_action('wp_footer', 'rhswp_stelselplaat_js_in_footer');
 
-  add_action( 'genesis_before_loop', 'rhswp_stelselplaat_encapsulate_start', 10 );
 
   add_action( 'genesis_after_loop', 'rhswp_stelselplaat_add_search_description', 10 );
 
@@ -52,99 +51,100 @@ function rhswp_stelselplaat_template_css() {
 @charset "UTF-8";
 /* CSS Document */
 
-#BRV_li {
-  top: 15px;
-  left: 20px;
-  width: 110px;
-}
-#BRI_li {
-  top: 15px;
-  left: 150px;
-  width: 110px;
-}
-#BLAU_li {
-  top: 15px;
-  left: 280px;
-  width: 110px;
-}
-#BRK_li {
-  top: 15px;
-  left: 440px;
-  width: 225px;
-}
-#BRT_li {
-  top: 15px;
-  left: 725px;
-}
-#BGT_li {
-  top: 160px;
-  left: 725px;
-  height: 75px;
-}
-#BRO_li {
-  top: 255px;
-  left: 725px;
-  height: 75px;
-}
-#WOZ_li {
-  top: 175px;
-  left: 505px;
-  width: 125px;
-}
-#BAG_li {
-  top: 355px;
-  left: 625px;
-  width: 245px;
-}
-#NHR_li {
-  top: 355px;
-  left: 345px;
-  width: 120px;
-}
-#BRP_li {
-  top: 355px;
-  left: 20px;
-  width: 245px;
-}
-#BRP-ni_li {
-  top: 395px;
-  left: 30px;
-  width: 110px;
-  border: 1px solid #fff;
-  height: 60px;
-}
-#BRP-i_li {
-  top: 395px;
-  left: 145px;
-  width: 110px;
-  border: 1px solid #fff;
-  height: 60px;
-}
-.leverancier ul + p {
-  margin: 7px -1px 0 !important;
-  line-height: 1em;
-  font-size: 10px;
-}
-.gereed .leverancier ul + p {
-  background: #C3DBB6;
-  border-color: #39870C;
-}
-.nietgereed .leverancier ul + p {
-  background: #FDF6BB;
-  border-color: #F9E11E;
-}
-#NHR_li .object {
-  top: -105px;
-}
-#BRP-ni_li .object {
-  top: -7px;
-}
-#BRP-i_li .object {
-  top: -7px;
-}
-.mod.box .zij > ul > li {
-  width: 63px;
-}
+  #BRV_li {
+    top: 15px;
+    left: 20px;
+    width: 110px;
+  }
+  #BRI_li {
+    top: 15px;
+    left: 150px;
+    width: 110px;
+  }
+  #BLAU_li {
+    top: 15px;
+    left: 280px;
+    width: 110px;
+  }
+  #BRK_li {
+    top: 15px;
+    left: 440px;
+    width: 225px; /* 17%; */
+  }
+  
+  #BRT_li {
+    top: 15px;
+    left: 725px;
+  }
+  #BGT_li {
+    top: 160px;
+    left: 725px;
+    height: 75px;
+  }
+  #BRO_li {
+    top: 255px;
+    left: 725px;
+    height: 75px;
+  }
+  #WOZ_li {
+    top: 175px;
+    left: 505px;
+    width: 125px;
+  }
+  #BAG_li {
+    top: 355px;
+    left: 625px;
+    width: 245px;
+  }
+  #NHR_li {
+    top: 355px;
+    left: 345px;
+    width: 120px;
+  }
+  #BRP_li {
+    top: 355px;
+    left: 20px;
+    width: 245px;
+  }
+  #BRP-ni_li {
+    top: 395px;
+    left: 30px;
+    width: 110px;
+    border: 1px solid #fff;
+    height: 60px;
+  }
+  #BRP-i_li {
+    top: 395px;
+    left: 145px;
+    width: 110px;
+    border: 1px solid #fff;
+    height: 60px;
+  }
+  .leverancier ul + p {
+    margin: 7px -1px 0 !important;
+    line-height: 1em;
+    font-size: 10px;
+  }
+  .gereed .leverancier ul + p {
+    background: #C3DBB6;
+    border-color: #39870C;
+  }
+  .nietgereed .leverancier ul + p {
+    background: #FDF6BB;
+    border-color: #F9E11E;
+  }
+  #NHR_li .object {
+    top: -105px;
+  }
+  #BRP-ni_li .object {
+    top: -7px;
+  }
+  #BRP-i_li .object {
+    top: -7px;
+  }
+  .mod.box .zij > ul > li {
+    width: 63px;
+  }
   
   ';
   
@@ -163,27 +163,58 @@ function rhswp_stelselplaat_template_css() {
 
 
 function rhswp_stelselplaat_js_in_footer() {
+
+  $stelselplaat_pijlenschema        = get_field('stelselplaat_pijlenschema', 'option');
+  $basisplaat                       = $stelselplaat_pijlenschema['url'];
+  $stelselplaat_json                = strip_tags( get_field('stelselplaat_json', 'option') );
+  $stelselplaat_begrippenrelaties   = strip_tags( get_field('stelselplaat_begrippenrelaties', 'option') );
+  $stelselplaat_image_location      = get_field('stelselplaat_image_location', 'option');
+
+
+  // add css to header  
   echo '<script type="text/javascript">
 var fileref=document.createElement("link");
 fileref.setAttribute("rel", "stylesheet");
 fileref.setAttribute("type", "text/css");
 fileref.setAttribute("href", "' . DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat-js-enabled.css?v2");
-document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat = stelselplaat || {};
-jQuery(document).ready(function($) {stelselplaat.relations = jQuery.parseJSON(\'{	"BRV":	["NHR", "BRP-ni", "BRP-i", "BRP"],	"BRI":	["BRP-ni", "BRP-i", "BRP"],	"BLAU":	["NHR", "BRP-ni", "BRP-i", "BRP"],	"BRK": 	["NHR", "BRP-ni", "BRP-i", "BRP", "BRT", "WOZ", "BGT", "BAG"],	"BRT":	["BAG", "BRK", "BGT"],	"BGT":	["BRT", "BAG", "BRK"],	"BRO":	["NHR"],	"BAG":	["BRT", "NHR", "BRK", "WOZ", "NHR", "BRK", "BGT", "BRP-i", "BRP"],	"WOZ":	["BRK", "BRP-i", "BRP-ni", "BRP", "NHR", "BAG"],	"NHR":	["BRO", "WOZ", "BRK", "BLAU", "BRV", "BAG", "BRP-i", "BRP-ni", "BRP"],	"BRP-i":	["WOZ", "NHR", "BLAU", "BRK", "BRV", "BRI", "BAG", "BRP"],	"BRP-ni":	["WOZ", "NHR", "BLAU", "BRK", "BRV", "BRI", "BRP"]}\');
-stelselplaat.begrippen_relations = jQuery.parseJSON(\'{	"Adres":	[		["BRP-i"],		["BRP-ni"],                ["BRP"],		["NHR"],		["WOZ"],		["BAG"],	 	["BRK"],		["BRT"],		["BLAU"],		["BRV"]	],	 "Inkomen":	[ 		["BRI"]	 ],	 "Partner":	[		["BRP-i"],                ["BRP-ni"],                ["BRP"],		["BRV"],		["WOZ"]	 ],	"Perceel":	 [		 ["BRK"],		 ["WOZ"]	 ],	 "Natuurlijk persoon":	[		["BRP-i"],		["BRP-ni"],                ["BRP"],		["NHR"],	 	["WOZ"],	 	["BRK"],	 	["BRV"]	 ],	 "Buitenland":	[		["BRP-i"],                ["BRP-ni"],                ["BRP"],		["NHR"],		["BRK"],		["WOZ"],		["BAG"]	],	"Kind":	[		["BRP-i"],                ["BRP-ni"],                ["BRP"],		["NHR"]	],	"Ouder":	[		["BRP-i"],                ["BRP-ni"],                ["BRP"]	],	"Vermogen":	[		["NHR"],		["WOZ"]	],	"Woonland":	[		["BRP-i"],                ["BRP-ni"],                ["BRP"],		["BRK"]	]}\');
-stelselplaat.image_location =  \'' . DO_STELSELPLAAT_BASE_URL . 'images/\';});
-	</script>';
+document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat = stelselplaat || {};';
+
+  echo "\n jQuery(document).ready(function($) {";
+
+  
+  if ( $stelselplaat_json ) {
+//    echo 'stelselplaat.relations = jQuery.parseJSON(\'' . $stelselplaat_json . '\');';
+    echo "\n stelselplaat.relations = jQuery.parseJSON('" . $stelselplaat_json . "');";
+  }
+    
+  if ( $stelselplaat_begrippenrelaties ) {
+    echo "\n stelselplaat.begrippen_relations = jQuery.parseJSON('" . $stelselplaat_begrippenrelaties . "');";
+  }
+  
+  if ( $stelselplaat_image_location ) {
+    echo 'stelselplaat.image_location =  \'' . $stelselplaat_image_location . '\';';
+  }
+  
+  if ( $basisplaat ) {
+    echo "\n stelselplaat.basis_plaat =  \"" . $basisplaat . '";';
+  }
+
+  echo '});</script>';
+
+
 }
 
 function rhswp_stelselplaat_encapsulate_start() {
 
   echo '<div id="kolom2">';
+  echo '<div id="adaptoratio">';
 
 
 }
 
 function rhswp_stelselplaat_encapsulate_end() {
 
+  echo '</div>'; // id="adaptoratio";
   echo '</div>'; // id="kolom2";
   
 //  echo '<hr>';
@@ -202,29 +233,59 @@ function rhswp_stelselplaat_add_search_description() {
 }
 
 function destelselplaat() {
-echo '<ul class="stelsel">
-  <li id="BRP_li" class="gereed"><em>Basisregistratie</em> <strong>Personen</strong></li>
-  <li class="relaties"><img src="' . DO_STELSELPLAAT_BASE_URL . 'images/relaties.png" alt="Relaties in het stelsel" /></li>
-  <li id="BRV_li" class="gereed"><a href="#BRV"><em>Basisregistratie</em> <strong>Voertuigen</strong></a></li>
-  <li id="BRI_li" class="gereed"><a href="#BRI"><em>Basisregistratie</em> <strong>Inkomen</strong></a></li>
-  <li id="BLAU_li" class="nietgereed"><a href="#BLAU"><strong><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></strong></a></li>
-  <li id="BRK_li" class="gereed"><a href="#BRK"><em>Basisregistratie</em> <strong>Kadaster</strong></a></li>
-  <li id="BRT_li" class="gereed"><a href="#BRT"><em>Basisregistratie</em> <strong>Topografie</strong></a></li>
-  <li id="BGT_li" class="nietgereed"><a href="#BGT"><em>Basisregistratie</em> <strong>Grootschalige topografie</strong></a></li>
-  <li id="BRO_li" class="nietgereed"><a href="#BRO"><em>Basisregistratie</em> <strong>Ondergrond</strong></a></li>
-  <li id="BAG_li" class="gereed"><a href="#BAG"><em>Basisregistraties</em> <strong>Adressen en Gebouwen</strong> </a></li>
-  <li id="WOZ_li" class="gereed"><a href="#WOZ"><em>Basisregistratie</em> <strong><abbr title="Waarde Onroerende Zaken">WOZ</abbr></strong></a></li>
-  <li id="NHR_li" class="gereed"><a href="#NHR"><strong>Handelsregister</strong></a></li>
-  <li id="BRP-ni_li" class="gereed"><a href="#BRP-ni"> <strong>niet-ingezetenen</strong> </a></li>
-  <li id="BRP-i_li" class="gereed"><a href="#BRP-i"> <strong>ingezetenen</strong> </a></li>
-</ul>
-<ul class="legenda">
-  <li class="gereed">Gereed</li>
-  <li class="nietgereed">Niet gereed</li>
-  <li class="legenda_geo">Bevat geometrie</li>
-  <li><a href="/onderwerpen/stelselinformatiepunt/stelselthemas/verbindingen/verbindingen-tussen-basisregistraties/toelichting-interactieve-stelselplaat">Toelichting</a></li>
-</ul>
-<div id="BAG" class="br BAG hide_js">
+
+echo rhswp_stelselplaat_encapsulate_start();
+
+if ( stelselplaat_introductie )
+
+if( get_field('stelselplaat_veld_basis', 'option') ) {
+  
+  $needle = '__IMAGE__';
+  
+  $stelselplaat_veld_basis    = get_field('stelselplaat_veld_basis', 'option');
+  $stelselplaat_pijlenschema  = get_field('stelselplaat_pijlenschema', 'option');
+  $stelselplaat_legenda       = get_field('stelselplaat_legenda', 'option');
+  
+  
+
+
+  $replacer                   = $stelselplaat_pijlenschema['url'];
+
+  $stelselplaat_veld_basis    = str_replace( $needle, $replacer, $stelselplaat_veld_basis);
+
+
+  echo $stelselplaat_veld_basis;
+  echo $stelselplaat_legenda;
+}
+else {
+  
+  echo '<ul class="stelsel">
+    <li id="BRP_li" class="gereed"><em>Basisregistratie</em> <strong>Personen</strong></li>
+    <li class="relaties"><img src="' . DO_STELSELPLAAT_BASE_URL . 'images/relaties-zww.png" alt="Relaties in het stelsel" /></li>
+    <li id="BRV_li" class="gereed"><a href="#BRV"><em>Basisregistratie</em> <strong>Voertuigen</strong></a></li>
+    <li id="BRI_li" class="gereed"><a href="#BRI"><em>Basisregistratie</em> <strong>Inkomen</strong></a></li>
+    <li id="BLAU_li" class="nietgereed"><a href="#BLAU"><strong><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></strong></a></li>
+    <li id="BRK_li" class="gereed"><a href="#BRK"><em>Basisregistratie</em> <strong>Kadaster</strong></a></li>
+    <li id="BRT_li" class="gereed"><a href="#BRT"><em>Basisregistratie</em> <strong>Topografie</strong></a></li>
+    <li id="BGT_li" class="nietgereed"><a href="#BGT"><em>Basisregistratie</em> <strong>Grootschalige topografie</strong></a></li>
+    <li id="BRO_li" class="nietgereed"><a href="#BRO"><em>Basisregistratie</em> <strong>Ondergrond</strong></a></li>
+    <li id="BAG_li" class="gereed"><a href="#BAG"><em>Basisregistraties</em> <strong>Adressen en Gebouwen</strong> </a></li>
+    <li id="WOZ_li" class="gereed"><a href="#WOZ"><em>Basisregistratie</em> <strong><abbr title="Waarde Onroerende Zaken">WOZ</abbr></strong></a></li>
+    <li id="NHR_li" class="gereed"><a href="#NHR"><strong>Handelsregister</strong></a></li>
+    <li id="BRP-ni_li" class="gereed"><a href="#BRP-ni"> <strong>niet-ingezetenen</strong> </a></li>
+    <li id="BRP-i_li" class="gereed"><a href="#BRP-i"> <strong>ingezetenen</strong> </a></li>
+  </ul>
+  <ul class="legenda">
+    <li class="gereed">Gereed</li>
+    <li class="nietgereed">Niet gereed</li>
+    <li class="legenda_geo">Bevat geometrie</li>
+    <li><a href="/onderwerpen/stelselinformatiepunt/stelselthemas/verbindingen/verbindingen-tussen-basisregistraties/toelichting-interactieve-stelselplaat">Toelichting</a></li>
+  </ul>';
+  
+}
+
+
+echo '<div id="BAG" class="br BAG hide_js">
   <h2><em>Basisregistraties</em> Adressen en Gebouwen</h2>
   <div class="tab">
     <h2><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></h2>
@@ -263,48 +324,21 @@ echo '<ul class="stelsel">
           <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a>
-          <ul>
-            <li>01-07-2014</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a>
-          <ul>
-            <li>31-12-2014</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#BRT"><abbr title="Basisregistratie Topografie">BRT</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a>
-          <ul>
-            <li>31 dec. 2015</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a> </li>
       </ul>
     </div>
     <div class="leverancier">
       <h3><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr> levert de volgende gegevens door:</h3>
       <p>Levert geen gegevens door vanuit andere registraties.</p>
-    </div>
-  </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistraties-adressen-en-gebouwen"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0025520">Besluit basisregistraties adressen en gebouwen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0025961">Regeling basisregistraties adressen en gebouwen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0030564">Regeling periodieke controle basisregistraties adressen en gebouwen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0023466">Wet basisregistraties adressen en gebouwen</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.kadaster.nl/web/file?uuid=391c0710-c5b4-4f83-8154-9332544e7b8e&amp;owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&amp;contentid=2590"> Catalogus basisregistraties adressen en gebouwen </a> (PDF, 358 KB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.kadaster.nl/bag"> Bezoek de homepage van <abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr> </a> </li>
-      </ul>
     </div>
   </div>
 </div>
@@ -321,11 +355,7 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -343,26 +373,6 @@ echo '<ul class="stelsel">
       <p><em>Onbekend</em></p>
     </div>
   </div>
-  <div class="tab">
-    <h2>Begrippen</h2>
-    <p>Onderstaand overzicht toont alle voorkomens van de begrippen in deze Basisregistratie.</p>
-    <p><em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></p>
-  </div>
-  <div class="tab">
-    <h2>Gegevens</h2>
-  </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-ondergrond"><abbr title="Basisregistratie Ondergrond">BRO</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li>Wet: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-        <li>Catalogus basisregistratie: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.broinfo.nl/"> Bezoek de homepage van <abbr title="Basisregistratie Ondergrond">BRO</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BLAU" class="br BLAU hide_js">
   <h2><em>Basisregistratie</em> Lonen, Arbeids- en Uitkerings­verhoudingen</h2>
@@ -377,25 +387,13 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -414,18 +412,6 @@ echo '<ul class="stelsel">
       <p><em>Onbekend</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-voor-lonen-arbeidsverhoudingen-en-uitkeringen"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li>Wet: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-        <li>Catalogus basisregistratie: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-        <li>Homepage basisregistratie: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BRK" class="br BRK hide_js">
   <h2><em>Basisregistratie</em> Kadaster</h2>
@@ -440,35 +426,19 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a>
-          <ul>
-            <li>2015</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a>
-          <ul>
-            <li>1-1-2017</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -517,19 +487,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-kadaster"><abbr title="Basisregistratie Kadaster">BRK</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0005259">Kadasterbesluit</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0004541&amp;hoofdstuk=3&amp;titeldeel=1&amp;artikel=48">Kadasterwet, artikel 48</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://brk.kadaster.nl"> Kennisbank Basisregistratie Kadaster </a> (PDF, niet van toepassing) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.kadaster.nl/web/Themas/Registraties/BRK.htm"> Bezoek de homepage van <abbr title="Basisregistratie Kadaster">BRK</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BRP-i" class="br BRP-i hide_js">
   <h2>Basisregistratie Personen</h2>
@@ -562,11 +519,7 @@ echo '<ul class="stelsel">
           <a class="gereed" href="#BRI"><abbr title="Basisregistratie Inkomen">BRI</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a></li>
@@ -594,21 +547,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-personen"><abbr title="Basisregistratie Personen">BRP</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0034306">Besluit basisregistratie personen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0034327">Regeling basisregistratie personen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0033715">Wet basisregistratie personen</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.bprbzk.nl/dsresource?objectid=40964&amp;type=org"> Logisch ontwerp ingezetenen (voorheen <abbr title="Gemeentelijke Basisadministratie Personen">GBA</abbr>) </a> (PDF, 7,8 MB) </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.bprbzk.nl/dsresource?objectid=45067&amp;type=org"> Logisch ontwerp niet-ingezetenen (voorheen <abbr title="Registratie Niet Ingezetenen">RNI</abbr>) </a> (PDF, 3,3 MB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.bprbzk.nl/BRP/Basisregistratie_Personen"> Bezoek de homepage van <abbr title="Basisregistratie Personen">BRP</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BRT" class="br BRT hide_js">
   <h2><em>Basisregistratie</em> Topografie</h2>
@@ -629,11 +567,7 @@ echo '<ul class="stelsel">
           <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a>
-          <ul>
-            <li>1-1-2017</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BGT"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -662,18 +596,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-topografie"><abbr title="Basisregistratie Topografie">BRT</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0021547">Wet basisregistraties kadaster en topografie</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.kadaster.nl/web/file?uuid=f4980d93-77ee-4036-934d-a49d7674a630&amp;owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&amp;contentid=7023"> Catalogus Basisregistratie Topografie </a> (PDF, 761 KB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.kadaster.nl/BRT"> Bezoek de homepage van <abbr title="Basisregistratie Topografie">BRT</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BRV" class="br BRV hide_js">
   <h2><em>Basisregistratie</em> Voertuigen</h2>
@@ -688,11 +610,7 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a></li>
@@ -724,18 +642,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-voertuigen"><abbr title="Basisregistratie Voertuigen">BRV</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0006622">Wegenverkeerswet</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.rdw.nl/SiteCollectionDocuments/Over%20RDW/Brochures%20en%20folders/Catalogus%20Basisregistratie%20Voertuigen.pdf"> Catalogus Basisregistratie Voertuigen </a> </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.rdw.nl/overrdw/Paginas/Kentekenregister-is-basisregistratie-voertuigen.aspx"> Bezoek de homepage van <abbr title="Basisregistratie Voertuigen">BRV</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="WOZ" class="br WOZ hide_js">
   <h2><em>Basisregistratie</em> <abbr title="Waarde Onroerende Zaken">WOZ</abbr></h2>
@@ -750,11 +656,7 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a>
-          <ul>
-            <li>01-07-2015</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a></li>
@@ -763,18 +665,10 @@ echo '<ul class="stelsel">
           <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a>
-          <ul>
-            <li>1-1-2016</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a>
-          <ul>
-            <li>1-1-2016</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -820,20 +714,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-waarde-onroerende-zaken"><abbr title="Waarde Onroerende Zaken">WOZ</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0007179">Uitvoeringsbesluit onderbouwing en uitvoering waardebepaling Wet waardering onroerende zaken</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0007165">Uitvoeringsregeling instructie waardebepaling Wet waardering onroerende zaken</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0007119">Wet waardering onroerende zaken</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.waarderingskamer.nl/documents/catalogus%20basisregistratie%20woz%20versie%201.6.pdf"> Catalogus Basisregistratie <abbr title="Waarde Onroerende Zaken">WOZ</abbr> </a> (PDF, 331 KB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.kadaster.nl/woz"> Bezoek de homepage van <abbr title="Waarde Onroerende Zaken">WOZ</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="NHR" class="br NHR hide_js">
   <h2>Handelsregister</h2>
@@ -848,11 +728,7 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a>
-          <ul>
-            <li>31-12-2014</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#RNI"><abbr title="Basisregistratie Personen niet-ingezetenen">BRP-ni</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding gereed)</div>
           <a class="gereed" href="#GBA"><abbr title="Basisregistratie Personen ingezetenen">BRP-i</abbr></a></li>
@@ -877,32 +753,16 @@ echo '<ul class="stelsel">
           <a class="gereed" href="#BRV"><abbr title="Basisregistratie Voertuigen">BRV</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a>
-          <ul>
-            <li>1 jan. 2015</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BRO"><abbr title="Basisregistratie Ondergrond">BRO</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BRO"><abbr title="Basisregistratie Ondergrond">BRO</abbr></a> </li>
       </ul>
     </div>
     <div class="leverancier">
@@ -924,19 +784,6 @@ echo '<ul class="stelsel">
         </li>
       </ul>
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
-    </div>
-  </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/handelsregister"><abbr title="Nieuw Handelsregister">NHR</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0024097">Handelsregisterregeling</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0021777&amp;hoofdstuk=1&amp;artikel=1">Handelsregisterwet, artikel 1</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.kvk.nl/download/Gegevenscatalogus%20v2.3_tcm14-266750.pdf"> Gegevenscatalogus Handelsregister </a> (PDF, 2,6 MB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.kvk.nl/over-de-kvk/over-het-handelsregister/handelsregisterwet/wat-is-het-nieuw-handelsregister/"> Bezoek de homepage van <abbr title="Nieuw Handelsregister">NHR</abbr> </a> </li>
-      </ul>
     </div>
   </div>
 </div>
@@ -962,62 +809,27 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRV"><abbr title="Basisregistratie Voertuigen">BRV</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRV"><abbr title="Basisregistratie Voertuigen">BRV</abbr></a> </li>
         <li class="gereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
           <a class="gereed" href="#BRI"><abbr title="Basisregistratie Inkomen">BRI</abbr></a></li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="nietgereed" href="#BLAU"><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a>
-          <ul>
-            <li>Datum onbekend</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a>
-          <ul>
-            <li>2015</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#WOZ"><abbr title="Waarde Onroerende Zaken">WOZ</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a>
-          <ul>
-            <li>2015</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#NHR"><abbr title="Nieuw Handelsregister">NHR</abbr></a> </li>
       </ul>
     </div>
     <div class="leverancier">
       <h3><abbr title="Basisregistratie Personen">BRP</abbr> levert de volgende gegevens door:</h3>
       <p>Levert geen gegevens door vanuit andere registraties.</p>
-    </div>
-  </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-personen"><abbr title="Basisregistratie Personen">BRP</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0034306">Besluit basisregistratie personen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0034327">Regeling basisregistratie personen</a> </li>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0033715">Wet basisregistratie personen</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.bprbzk.nl/dsresource?objectid=40964&amp;type=org"> Logisch ontwerp ingezetenen (voorheen <abbr title="Gemeentelijke Basisadministratie Personen">GBA</abbr>) </a> (PDF, 7,8 MB) </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.bprbzk.nl/dsresource?objectid=45067&amp;type=org"> Logisch ontwerp niet-ingezetenen (voorheen <abbr title="Registratie Niet Ingezetenen">RNI</abbr>) </a> (PDF, 3,3 MB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.bprbzk.nl/BRP/Basisregistratie_Personen"> Bezoek de homepage van <abbr title="Basisregistratie Personen">BRP</abbr> </a> </li>
-      </ul>
     </div>
   </div>
 </div>
@@ -1060,18 +872,6 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-inkomen"><abbr title="Basisregistratie Inkomen">BRI</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/1.0:c:BWBR0002320&amp;hoofdstuk=IVA&amp;artikel=21">Algemene wet inzake rijksbelastingen, artikel 21</a> </li>
-        <li>Catalogus basisregistratie: <em>Deze informatie is nog niet aangeleverd door de basisregistratie.</em></li>
-        <li class="external_link">Homepage basisregistratie: <a href="http://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/werk_en_inkomen/basisregistratie_inkomen/"> Bezoek de homepage van <abbr title="Basisregistratie Inkomen">BRI</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
 <div id="BGT" class="br BGT hide_js">
   <h2><em>Basisregistratie</em> Grootschalige Topografie</h2>
@@ -1086,11 +886,7 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a>
-          <ul>
-            <li>31-12-2015</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BAG"><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></a> </li>
       </ul>
     </div>
     <div class="ik">
@@ -1105,18 +901,10 @@ echo '<ul class="stelsel">
       <ul>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a>
-          <ul>
-            <li>1-1-2017</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRK"><abbr title="Basisregistratie Kadaster">BRK</abbr></a> </li>
         <li class="nietgereed">
           <div class="statusVerbinding">(Verbinding niet gereed)</div>
-          <a class="gereed" href="#BRT"><abbr title="Basisregistratie Topografie">BRT</abbr></a>
-          <ul>
-            <li>1-1-2017</li>
-          </ul>
-        </li>
+          <a class="gereed" href="#BRT"><abbr title="Basisregistratie Topografie">BRT</abbr></a> </li>
       </ul>
     </div>
     <div class="leverancier">
@@ -1129,28 +917,8 @@ echo '<ul class="stelsel">
       <p><em>Doorlevering is gereed (groen) wanneer het doorgeleverde gegeven in de reguliere producten van de basisregistratie is opgenomen</em></p>
     </div>
   </div>
-  <div class="tab">
-    <h2>Begrippen</h2>
-    <p>Onderstaand overzicht toont alle voorkomens van de begrippen in deze Basisregistratie.</p>
-    <p>Geen van de opgenomen begrippen komen voor in deze basisregistratie.</p>
-  </div>
-  <div class="tab">
-    <h2>Gegevens</h2>
-  </div>
-  <div class="tab">
-    <div class="zie_ook">
-      <h2>Zie ook</h2>
-      <p>Voor informatie over rollen, producten en diensten en aansluiten, kijk op de pagina <a href="/onderwerpen/stelselinformatiepunt/stelsel-van-basisregistraties/basisregistratie-grootschalige-topografie"><abbr title="Basisregistratie grootschalige Topografie">BGT</abbr> in vogelvlucht</a>.</p>
-      <p>Onderstaand overzicht toont de verwijzingen naar de gerelateerde wetgeving, de eigen catalogus en de website van deze Basisregistratie.</p>
-      <ul>
-        <li class="external_link">Wet: <a href="http://wetten.overheid.nl/BWBR0034026">Wet basisregistratie grootschalige topografie</a> </li>
-        <li class="external_link">Catalogus basisregistratie: <a href="http://www.geonovum.nl/sites/default/files/BGTGegevenscatalogus111.pdf"> Gegevenscatalogus <abbr title="Basisregistratie grootschalige Topografie">BGT</abbr> 1.1 </a> (PDF, 3 MB) </li>
-        <li class="external_link">Homepage basisregistratie: <a href="https://bgtweb.pleio.nl/"> Bezoek de homepage van <abbr title="Basisregistratie grootschalige Topografie">BGT</abbr> </a> </li>
-      </ul>
-    </div>
-  </div>
 </div>
-</div>
+
 ';
 
   

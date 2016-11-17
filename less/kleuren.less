@@ -1,4 +1,26 @@
+/*
+ * ----------------------------------------------------------------------------------
+ * ICTU / WP Stelselplaat plugin
+ * ----------------------------------------------------------------------------------
+ * Plugin Name:   ICTU / WP Stelselplaat plugin
+ * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
+ * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
+ * Version:       0.0.4
+ * Version desc:  Blokken donkerblauw_vol gemaakt
+ * Author:        Paul van Buuren
+ * Author URI:    https://wbvb.nl
+ * License:       GPL-2.0+
+ * @link          http://wbvb.nl/themes/wp-rijkshuisstijl/
+ * ----------------------------------------------------------------------------------
+ */
 
+
+@import '00-palet.less';
+
+@black:                 black;
+@wit:                   #fff;
+@txt:                   @black;
+@active:                #275937;
 
 @color_gereed:          #39870c;
 @color_gereed_10pc: 	#e1eddb;
@@ -8,9 +30,19 @@
 @color_nietgereed_10pc: #FDF6BB;
 @color_nietgereed_20pc: #fdf6bb;
 
-@txt:                   black;
-@wit:                   #fff;
-@active:                #275937;
+@color_nietgereed:          @donkerblauw_vol;
+@color_nietgereed_10pc: 	@donkerblauw_licht;
+@color_nietgereed_20pc:		@donkerblauw_lichtst;
+
+
+@color_gereed:          @donkerblauw_vol;
+@color_gereed_10pc: 	@donkerblauw_licht;
+@color_gereed_20pc:		@donkerblauw_lichtst;
+
+@txt_nietgereed:          	@wit;
+
+
+
 
 //@color_nietgereed:   	red;  
 //@color_nietgereed_10pc: lighten( @color_nietgereed, 20% );

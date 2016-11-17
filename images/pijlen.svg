@@ -5,33 +5,33 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="pijlen">
-            <polyline id="from-nhr-to-brv" stroke="#388D00" stroke-width="4" points="87.9100037 150 87.9100037 234.552734 371.886566 234.552734 371.886566 398.900391"></polyline>
-            <path id="from-nhr-to-brv-decoration-1" d="M87.9100037,150 L90.9100037,160.8 L84.9100037,160.8 L87.9100037,150 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M190,151 L189.988281,428" id="x" stroke="#388D00" stroke-width="4"></path>
-            <path id="x-decoration-1" d="M190,151 L192.999543,161.800127 L186.999543,161.799873 L190,151 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M340,440 L192,439.96875" id="x" stroke="#388D00" stroke-width="4"></path>
-            <path id="x-decoration-1" d="M340,440 L329.199367,442.99772 L329.200634,436.99772 L340,440 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M570,171.03125 L570,120" id="x" stroke="#388D00" stroke-width="4"></path>
-            <path id="x-decoration-1" d="M570,171.03125 L567,160.23125 L573,160.23125 L570,171.03125 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M728,39.03125 L616,39.0194092" id="x" stroke="#388D00" stroke-width="4"></path>
-            <path id="x-decoration-1" d="M728,39.03125 L717.199683,42.0301082 L717.200317,36.0301082 L728,39.03125 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M480,423.03125 L692,423.031553" id="x" stroke="#388D00" stroke-width="4"></path>
-            <path id="x-decoration-1" d="M480,423.03125 L490.800004,420.031265 L490.799996,426.031265 L480,423.03125 Z" stroke="#388D00" stroke-width="4"></path>
-            <polyline id="from-nhr-to-brv" stroke="#388D00" stroke-width="4" points="208 152 208 184 72 184 72 428"></polyline>
-            <path id="from-nhr-to-brv-decoration-1" d="M208,152 L211,162.8 L205,162.8 L208,152 Z" stroke="#388D00" stroke-width="4"></path>
-            <path d="M56.7727051,150 L56.6777344,436.736328" id="from-brp-to-brv" stroke="#FEE200" stroke-width="6" stroke-linecap="square"></path>
-            <path id="from-brp-to-brv-decoration-1" d="M56.7727051,150 L59.7691278,160.800993 L53.7691281,160.799006 L56.7727051,150 Z" stroke="#FEE200" stroke-width="6" stroke-linecap="square"></path>
-            <polyline id="Line" stroke="#388D00" stroke-width="4" points="108.5 149.5 108.5 215.5 200.435902 215.237641 200.435902 424"></polyline>
-            <path id="Line-decoration-1" d="M108.5,149.5 L111.5,160.3 L105.5,160.3 L108.5,149.5 Z" stroke="#388D00" stroke-width="4"></path>
-            <polyline id="Line" stroke="#388D00" stroke-width="4" points="480 150 480 215.237641 200.435902 215.237641 200.435902 424"></polyline>
-            <path id="Line-decoration-1" d="M480,150 L483,160.8 L477,160.8 L480,150 Z" stroke="#388D00" stroke-width="4"></path>
-            <polyline id="Line" stroke="#388D00" stroke-width="4" points="500 215.237641 200.435902 215.237641 200.435902 424"></polyline>
-            <path id="Line-decoration-1" d="M500,215.237641 L489.2,218.237641 L489.2,212.237641 L500,215.237641 Z" stroke="#388D00" stroke-width="4"></path>
-            <polyline id="Line" stroke="#388D00" stroke-width="4" points="189.5 468.5 189.5 495.5 696.283203 495.5 696.283203 458.894531"></polyline>
-            <path id="Line-decoration-1" d="M189.5,468.5 L192.5,479.3 L186.5,479.3 L189.5,468.5 Z" stroke="#388D00" stroke-width="4"></path>
-            <polyline id="Line" stroke="#388D00" stroke-width="4" points="728 128 704 128 704 444"></polyline>
-            <path id="Line-decoration-1" d="M728,128 L717.2,131 L717.2,125 L728,128 Z" stroke="#388D00" stroke-width="4"></path>
+        <g id="pijlen" stroke-width="4" stroke="#01689B">
+            <polyline id="from-nhr-to-brv" points="87.9100037 150 87.9100037 234.552734 371.886566 234.552734 371.886566 398.900391"></polyline>
+            <path id="from-nhr-to-brv-decoration-1" d="M87.9100037,150 L90.9100037,160.8 L84.9100037,160.8 L87.9100037,150 Z"></path>
+            <path d="M190,151 L189.988281,428" id="x"></path>
+            <path id="x-decoration-1" d="M190,151 L192.999543,161.800127 L186.999543,161.799873 L190,151 Z"></path>
+            <path d="M340,440 L192,439.96875" id="x"></path>
+            <path id="x-decoration-1" d="M340,440 L329.199367,442.99772 L329.200634,436.99772 L340,440 Z"></path>
+            <path d="M570,171.03125 L570,120" id="x"></path>
+            <path id="x-decoration-1" d="M570,171.03125 L567,160.23125 L573,160.23125 L570,171.03125 Z"></path>
+            <path d="M728,39.03125 L616,39.0194092" id="x"></path>
+            <path id="x-decoration-1" d="M728,39.03125 L717.199683,42.0301082 L717.200317,36.0301082 L728,39.03125 Z"></path>
+            <path d="M480,423.03125 L692,423.031553" id="x"></path>
+            <path id="x-decoration-1" d="M480,423.03125 L490.800004,420.031265 L490.799996,426.031265 L480,423.03125 Z"></path>
+            <polyline id="from-nhr-to-brv" points="208 152 208 184 72 184 72 428"></polyline>
+            <path id="from-nhr-to-brv-decoration-1" d="M208,152 L211,162.8 L205,162.8 L208,152 Z"></path>
+            <path d="M56.7727051,150 L56.6777344,436.736328" id="from-brp-to-brv"></path>
+            <path id="from-brp-to-brv-decoration-1" d="M56.7727051,150 L59.7691278,160.800993 L53.7691281,160.799006 L56.7727051,150 Z"></path>
+            <polyline id="Line" points="108.5 149.5 108.5 215.5 200.435902 215.237641 200.435902 424"></polyline>
+            <path id="Line-decoration-1" d="M108.5,149.5 L111.5,160.3 L105.5,160.3 L108.5,149.5 Z"></path>
+            <polyline id="Line" points="480 150 480 215.237641 200.435902 215.237641 200.435902 424"></polyline>
+            <path id="Line-decoration-1" d="M480,150 L483,160.8 L477,160.8 L480,150 Z"></path>
+            <polyline id="Line" points="500 215.237641 200.435902 215.237641 200.435902 424"></polyline>
+            <path id="Line-decoration-1" d="M500,215.237641 L489.2,218.237641 L489.2,212.237641 L500,215.237641 Z"></path>
+            <polyline id="Line" points="189.5 468.5 189.5 495.5 696.283203 495.5 696.283203 458.894531"></polyline>
+            <path id="Line-decoration-1" d="M189.5,468.5 L192.5,479.3 L186.5,479.3 L189.5,468.5 Z"></path>
+            <polyline id="Line" points="728 128 704 128 704 444"></polyline>
+            <path id="Line-decoration-1" d="M728,128 L717.2,131 L717.2,125 L728,128 Z"></path>
         </g>
     </g>
 </svg>

@@ -1,3 +1,19 @@
+
+/**
+ * ICTU / WP Stelselplaat plugin - stelselcatalogus-template.php
+ * ----------------------------------------------------------------------------------
+ * Zoekresultaatpagina
+ * ----------------------------------------------------------------------------------
+ * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
+ * Version:       0.0.3
+ * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
+ * Author:        Paul van Buuren
+ * Author URI:    https://wbvb.nl
+ * License:       GPL-2.0+
+ * @link    http://wbvb.nl/themes/wp-rijkshuisstijl/
+ */
+
+
 jQuery(document).ready(function ($) {
 
   $('.br').hide();
@@ -97,7 +113,8 @@ jQuery(document).ready(function ($) {
       $(this).parent().css('z-index', 'auto');
     }
     
-    $('.relaties img').attr('src', stelselplaat.image_location + 'relaties.png');
+      $('.relaties img').attr('src', stelselplaat.basis_plaat );
+//    $('.relaties img').attr('src', stelselplaat.image_location + 'relaties.png');
 //    $('.relaties img').attr('src', stelselplaat.image_location + 'pijlen.svg');
     $(this).parent().siblings().stop().animate({
       opacity: 1
@@ -202,7 +219,8 @@ jQuery(document).ready(function ($) {
 
   // Init page
   hashChange();
-
+if ( 22 === 33 ) {
+  
   $('.stelselplaat').before('<div class="begrippen-filter"><h2><a href="#">Filter op begrippen</a></h2><p>Toon basisregistraties met begrip:</p></div>');
   $('.begrippen-filter h2').siblings().hide();
   $('.begrippen-filter h2').live('click', function (e) {
@@ -212,7 +230,7 @@ jQuery(document).ready(function ($) {
     $('.begrippen-filter h2').siblings().slideToggle();
 
     // add filters
-    if ($('.begrippen-filter ul').length === 0) {
+    if ( $('.begrippen-filter ul').length === 0 ) {
       $('.begrippen-filter').append('<ul></ul>');
       for (var begrip in stelselplaat.begrippen_relations) {
         $('.begrippen-filter ul').append('<li><a href="#">' + begrip + '</a></li>');
@@ -237,7 +255,8 @@ jQuery(document).ready(function ($) {
       $('.stelsel>li').stop().animate({ opacity: 1 });
       $('.begrippen-filter h2 a').text('Filter op begrippen');
       $('.begrippen-filter .active').removeClass('active');
-    $('.relaties img').attr('src', stelselplaat.image_location + 'relaties.png');
+      $('.relaties img').attr('src', stelselplaat.basis_plaat );
+//    $('.relaties img').attr('src', stelselplaat.image_location + 'relaties.png');
 //      $('.relaties img').attr('src', stelselplaat.image_location + 'pijlen.svg');
 
     }
@@ -264,6 +283,7 @@ jQuery(document).ready(function ($) {
 
     e.preventDefault();
   });
+}
 
 });
 

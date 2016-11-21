@@ -98,7 +98,8 @@ function rhswp_stelselplaat_js_in_footer() {
     var fileref=document.createElement("link");
     fileref.setAttribute("rel", "stylesheet");
     fileref.setAttribute("type", "text/css");
-    fileref.setAttribute("href", "' . DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat-js-enabled.css?v2");
+    fileref.setAttribute("media", "screen and (min-width: 900px)");
+    fileref.setAttribute("href", "' . DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat-js-enabled.css");
     document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat = stelselplaat || {};';
 
   echo "\n jQuery(document).ready(function($) {\n";

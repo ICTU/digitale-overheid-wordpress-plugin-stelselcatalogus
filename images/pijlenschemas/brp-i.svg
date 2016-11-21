@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="892px" height="502px" viewBox="0 0 892 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>brp-i</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="892" height="502"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="892" height="502" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pijlen">
+            <g id="brp-i">
+                <g id="background" stroke="#979797" stroke-width="2">
+                    <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <polyline id="Line" stroke="#01689B" stroke-width="4" points="189.5 468.5 189.5 495.5 696.283203 495.5 696.283203 458.894531"></polyline>
+                <path id="Line-decoration-1" d="M189.5,468.5 L192.5,479.3 L186.5,479.3 L189.5,468.5 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M340,440 L192,439.96875" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M340,440 L329.199367,442.99772 L329.200634,436.99772 L340,440 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="Line" stroke="#01689B" stroke-width="4" points="500 215.237641 190.007324 215.237641 190.007324 424"></polyline>
+                <path id="Line-decoration-1" d="M500,215.237641 L489.2,218.237641 L489.2,212.237641 L500,215.237641 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="line" stroke="#01689B" stroke-width="4" points="312 150 312 424 240 424"></polyline>
+                <path id="line-decoration-1" d="M312,150 L315,160.8 L309,160.8 L312,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M481,150 L481,215.20459" id="line" stroke="#01689B" stroke-width="4"></path>
+                <path id="line-decoration-1" d="M481,150 L484,160.8 L478,160.8 L481,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="line" stroke="#01689B" stroke-width="4" points="109 150 109 215.20459 216 215.20459"></polyline>
+                <path id="line-decoration-1" d="M109,150 L112,160.8 L106,160.8 L109,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M190.026093,150 L190.026093,428" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M190.026093,150 L193.026093,160.8 L187.026093,160.8 L190.026093,150 Z" stroke="#01689B" stroke-width="4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

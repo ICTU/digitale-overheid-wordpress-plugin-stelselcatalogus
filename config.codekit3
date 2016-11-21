@@ -2806,7 +2806,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bri.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/bri.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/bri.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/brk.png": {
 		"ft": 32768,
@@ -2814,7 +2824,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brk.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/brk.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/brk.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/bro.png": {
 		"ft": 32768,
@@ -2822,7 +2842,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bro.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/bro.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/bro.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/brp-i.png": {
 		"ft": 32768,
@@ -2830,7 +2860,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brp-i.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/brp-i.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/brp-i.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/brp-ni.png": {
 		"ft": 32768,
@@ -2838,7 +2878,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brp-ni.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/brp-ni.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/brp-ni.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/brt.png": {
 		"ft": 32768,
@@ -2846,7 +2896,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brt.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/brt.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/brt.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/brv.png": {
 		"ft": 32768,
@@ -2854,7 +2914,17 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brv.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/brv.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/brv.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/nhr.png": {
 		"ft": 32768,
@@ -2862,7 +2932,35 @@
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/nhr.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/nhr.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/nhr.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/images\/pijlenschemas\/pijlen.png": {
+		"ft": 32768,
+		"iS": 21005,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/pijlen.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/pijlen.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/pijlen.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/pijlenschemas\/woz.png": {
 		"ft": 32768,
@@ -2871,6 +2969,16 @@
 		"oAP": "\/images\/pijlenschemas\/woz.png",
 		"oF": 0,
 		"opt": 1
+		},
+	"\/images\/pijlenschemas\/woz.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/woz.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/images\/relaties-zww.png": {
 		"ft": 32768,

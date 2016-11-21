@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="892px" height="502px" viewBox="0 0 892 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>brp-ni</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="892" height="502"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="892" height="502" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pijlen">
+            <g id="brp-ni">
+                <g id="background" stroke="#979797" stroke-width="2">
+                    <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <path d="M337.599609,470.999452 L56,471" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M337.599609,470.999452 L326.799615,473.999473 L326.799604,467.999473 L337.599609,470.999452 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M500,195.237641 L56,195.237641" id="Line" stroke="#01689B" stroke-width="4"></path>
+                <path id="Line-decoration-1" d="M500,195.237641 L489.2,198.237641 L489.2,192.237641 L500,195.237641 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M312,150 L312,195" id="line" stroke="#01689B" stroke-width="4"></path>
+                <path id="line-decoration-1" d="M312,150 L315,160.8 L309,160.8 L312,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M466,150 L466,195.20459" id="line" stroke="#01689B" stroke-width="4"></path>
+                <path id="line-decoration-1" d="M466,150 L469,160.8 L463,160.8 L466,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="from-nhr-to-brv" stroke="#01689B" stroke-width="4" points="208 152 208 184 72 184 72 428"></polyline>
+                <path id="from-nhr-to-brv-decoration-1" d="M208,152 L211,162.8 L205,162.8 L208,152 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M56.7727051,150 L56.6777344,472.736328" id="from-brp-to-brv" stroke="#01689B" stroke-width="4"></path>
+                <path id="from-brp-to-brv-decoration-1" d="M56.7727051,150 L59.7695269,160.800882 L53.7695271,160.799117 L56.7727051,150 Z" stroke="#01689B" stroke-width="4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -12,11 +12,17 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="pijlen">
             <g id="bag">
-                <g id="background" stroke="#979797" stroke-width="2" fill="#D8D8D8" opacity="0.242012593">
+                <g id="background" stroke="#979797" stroke-width="2">
                     <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
                 </g>
                 <path d="M641,235 L694,235" id="x" stroke="#01689B" stroke-width="4"></path>
                 <path id="x-decoration-1" d="M641,235 L651.8,232 L651.8,238 L641,235 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M480,423.03125 L692,423.031553" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M480,423.03125 L490.800004,420.031265 L490.799996,426.031265 L480,423.03125 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="Line" stroke="#01689B" stroke-width="4" points="189.5 468.5 189.5 495.5 696.283203 495.5 696.283203 458.894531"></polyline>
+                <path id="Line-decoration-1" d="M189.5,468.5 L192.5,479.3 L186.5,479.3 L189.5,468.5 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="Line" stroke="#01689B" stroke-width="4" points="728 128 704 128 704 444"></polyline>
+                <path id="Line-decoration-1" d="M728,128 L717.2,131 L717.2,125 L728,128 Z" stroke="#01689B" stroke-width="4"></path>
                 <path d="M723,199 L696,199" id="x" stroke="#01689B" stroke-width="4"></path>
                 <path id="x-decoration-1" d="M723,199 L712.2,202 L712.2,196 L723,199 Z" stroke="#01689B" stroke-width="4"></path>
                 <polyline id="Line" stroke="#01689B" stroke-width="4" transform="translate(682.000000, 220.000000) scale(-1, 1) translate(-682.000000, -220.000000) " points="694 58 670 58 670 382"></polyline>

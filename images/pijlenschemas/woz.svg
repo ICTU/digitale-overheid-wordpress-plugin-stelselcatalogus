@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="892px" height="502px" viewBox="0 0 892 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>woz</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="892" height="502"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="892" height="502" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pijlen">
+            <g id="woz">
+                <g id="background" stroke="#979797" stroke-width="2">
+                    <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <polyline id="Line-Copy" stroke="#01689B" stroke-width="4" points="500 194.237641 56 194.237641 56 428"></polyline>
+                <path id="Line-Copy-decoration-1" d="M500,194.237641 L489.2,197.237641 L489.2,191.237641 L500,194.237641 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="Line-Copy-2" stroke="#01689B" stroke-width="4" points="500 215.237641 200.435902 215.237641 200.435902 424"></polyline>
+                <path id="Line-Copy-2-decoration-1" d="M500,215.237641 L489.2,218.237641 L489.2,212.237641 L500,215.237641 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="from-nhr-to-brv-copy-3" stroke="#01689B" stroke-width="4" points="496 254.019775 426.031006 254.019775 426.031006 432"></polyline>
+                <path id="from-nhr-to-brv-copy-3-decoration-1" d="M496,254.019775 L485.2,257.019775 L485.2,251.019775 L496,254.019775 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="from-nhr-to-brv-copy-4" stroke="#01689B" stroke-width="4" points="496 254.019775 426.031006 254.019775 313.031006 254.162109 313.031006 424.845215 243.793457 424.845215"></polyline>
+                <path id="from-nhr-to-brv-copy-4-decoration-1" d="M496,254.019775 L485.2,257.019775 L485.2,251.019775 L496,254.019775 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M570,171.03125 L570,120" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M570,171.03125 L567,160.23125 L573,160.23125 L570,171.03125 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="x-copy-3" stroke="#01689B" stroke-width="4" points="641 235 694 235 694.296875 381.328125"></polyline>
+                <path id="x-copy-3-decoration-1" d="M641,235 L651.8,232 L651.8,238 L641,235 Z" stroke="#01689B" stroke-width="4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

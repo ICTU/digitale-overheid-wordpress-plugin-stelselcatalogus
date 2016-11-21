@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.4
- * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
+ * Version:       0.0.5
+ * Version desc:  SVG pijlen; mediaquery in JS. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -14,13 +14,14 @@
  */
 
 jQuery(document).ready(function ($) {
-  
+
+  var doPopupWindows = false;  
   
   // =========================================================================================================
   
   // media query event handler
   if (matchMedia) {
-      var mq = window.matchMedia('(min-width: 1000px)');
+      var mq = window.matchMedia('(min-width: 900px)');
       mq.addListener(WidthChange);
       WidthChange(mq);
   }
@@ -31,21 +32,26 @@ jQuery(document).ready(function ($) {
   function WidthChange(mq) {
       
     if (mq.matches) {
-      // window width is at least 1000px
+      // window width is at least 900px
       // don't show menu button
-      console.log('maak de boel interactief');
+//      console.log('maak de boel interactief');
+      $('.br').hide();
+      doPopupWindows = true;  
     }
     else {
-      // window width is less than 500px
+      // window width is less than 900px
       // DO show menu button
-      console.log('Niet-actieve layout');
+//      console.log('Niet-actieve layout');
+      $('.br').show();
+      doPopupWindows = false;  
+      $('.popup .close').click();
+
     }
   
   }
   
   // =========================================================================================================
   
-  $('.br').hide();
 
   
   // =========================================================================================================
@@ -53,55 +59,61 @@ jQuery(document).ready(function ($) {
    * Open popup based on hash
    */
   function openPopup() {
-    // close filters
-    $('.begrippen-filter h2').siblings().slideUp();
 
-    // reset
-    clearTimeout(timer);
-    timer = null;
-    $('.popup').fadeOut(function () {
-      $(this).remove();
-    });
-    $(this).parent().animate({ opacity: 1}, 'fast');
-    $(this).parent().siblings().each(function () {
-      $(this).animate({
-        top: $.data(this, 'top'),
-        left: $.data(this, 'left'),
-        height: $.data(this, 'height'),
-        width: $.data(this, 'width')
-      }, 150).css('z-index', 'auto');
-    });
-
-    // set shield
-    if ($('.shield').length === 0) {
-      $(this).parents('.stelsel').append('<li class="shield" />');
-    }
-
-    // remember data
-    $(this).parent().each(function () {
-      $.data(this, 'top', $(this).css('top'));
-      $.data(this, 'left', $(this).css('left'));
-      $.data(this, 'height', $(this).css('height'));
-      $.data(this, 'width', $(this).css('width'));
-    });
-
-    // animate this
-    $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
-      top: 10,
-      left: 150,
-      height: 600,
-      width: 600
-    }, 200, 'linear', function () {
-      // extra content
-      $(this).append('<div class="popup mod box closed" />');
-      $(this).find('.popup').hide().fadeIn().prepend('<a class="close" href="#">X</a>');
-      $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
-
-      // Trigger first (default tab) or specific tab from hash
-      var hash = window.location.hash.split('~');
-      var index = hash.length > 1 ? hash[1] : 0;
-      $(this).find('.tabs li').eq(index).find('a').data('time', 0).each(openTab);
-    });
+    if ( doPopupWindows ) {
+        
+      // close filters
+      $('.begrippen-filter h2').siblings().slideUp();
+  
+      // reset
+      clearTimeout(timer);
+      timer = null;
+      $('.popup').fadeOut(function () {
+        $(this).remove();
+      });
+      $(this).parent().animate({ opacity: 1}, 'fast');
+      $(this).parent().siblings().each(function () {
+        $(this).animate({
+          top: $.data(this, 'top'),
+          left: $.data(this, 'left'),
+          height: $.data(this, 'height'),
+          width: $.data(this, 'width')
+        }, 150).css('z-index', 'auto');
+      });
+  
+      // set shield
+      if ($('.shield').length === 0) {
+        $(this).parents('.stelsel').append('<li class="shield" />');
+      }
+  
+      // remember data
+      $(this).parent().each(function () {
+        $.data(this, 'top', $(this).css('top'));
+        $.data(this, 'left', $(this).css('left'));
+        $.data(this, 'height', $(this).css('height'));
+        $.data(this, 'width', $(this).css('width'));
+      });
+  
+      // animate this
+      $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
+        top: 10,
+        left: 150,
+        height: 600,
+        width: 600
+      }, 200, 'linear', function () {
+        // extra content
+        $(this).append('<div class="popup mod box closed" />');
+        $(this).find('.popup').hide().fadeIn().prepend('<a class="close" href="#">X</a>');
+        $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
+  
+        // Trigger first (default tab) or specific tab from hash
+        var hash = window.location.hash.split('~');
+        var index = hash.length > 1 ? hash[1] : 0;
+        $(this).find('.tabs li').eq(index).find('a').data('time', 0).each(openTab);
+      });
+  
+      }
+    
   };
   
   // =========================================================================================================
@@ -132,12 +144,13 @@ jQuery(document).ready(function ($) {
 
       // Linux server is case sensitive, uploading within Joomla convert file name to lowercase.
       var image_lowercase       = $selector.toLowerCase();
-      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.png';
+//      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.png';
+      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.svg';
 
 
       var theKey = 'hoverimages_'  + image_lowercase;
       
-      console.log('Checking: ' + theKey );
+//      console.log('Checking: ' + theKey );
       
       if(typeof stelselplaat[theKey] === 'undefined') {
           // does not exist
@@ -151,7 +164,7 @@ jQuery(document).ready(function ($) {
       }
       
 //      console.log("D'r wordt gehoverd en dit moet 'm zijn: " + image_hover_location );
-      console.log(image_hover_location);
+//      console.log(image_hover_location);
       
       $('.relaties img').attr('src', image_hover_location );
     }, 250);
@@ -208,24 +221,6 @@ jQuery(document).ready(function ($) {
     var id = $(this).prop('href').split('#');
     $('#' + id[1] + '_li a').click();
   });
-  
-  // =========================================================================================================
-  
-if ( 22 == 33 ) {
-  // even geen tabs meer
-  /*
-   * Tabs
-   */
-  $('.br').each(function () {
-    $(this).find('h2').eq(0).after('<ul class="tabs" />');
-    var id = $(this).attr('id');
-    $(this).find('.tab h2').each(function (i) {
-      $(this).parents('.br').find('.tabs').append('<li><a href="#' + id + '~' + i + '">' + $(this).html() + '</a></li>');
-      $(this).remove();
-    });
-  });
-
-}
   
   // =========================================================================================================
   
@@ -293,72 +288,6 @@ if ( 22 == 33 ) {
   hashChange();
   
   // =========================================================================================================
-  
-if ( 22 === 33 ) {
-  
-  $('.stelselplaat').before('<div class="begrippen-filter"><h2><a href="#">Filter op begrippen</a></h2><p>Toon basisregistraties met begrip:</p></div>');
-  $('.begrippen-filter h2').siblings().hide();
-  $('.begrippen-filter h2').live('click', function (e) {
-    // close open dialog
-    $('.popup .close').click();
-    // open filters
-    $('.begrippen-filter h2').siblings().slideToggle();
-
-    // add filters
-    if ( $('.begrippen-filter ul').length === 0 ) {
-      $('.begrippen-filter').append('<ul></ul>');
-      for (var begrip in stelselplaat.begrippen_relations) {
-        $('.begrippen-filter ul').append('<li><a href="#">' + begrip + '</a></li>');
-      }
-    }
-    // Prevent opening anchor.
-    e.preventDefault();
-  });
-  $('.begrippen-filter ul li a').live('click', function (e) {
-    // vars
-    var begrip = $(this).text();
-    var relaties = stelselplaat.begrippen_relations[begrip];
-
-    // reset
-    $('.stelsel .object').remove();
-    $('.stelsel>li').not('.relaties').stop().animate({ opacity: 0.1 });
-
-    // animate
-    if ($(this).html() == $('.begrippen-filter .active').html()) {
-      filter_active = false;
-
-      $('.stelsel>li').stop().animate({ opacity: 1 });
-      $('.begrippen-filter h2 a').text('Filter op begrippen');
-      $('.begrippen-filter .active').removeClass('active');
-      $('.relaties img').attr('src', stelselplaat.basis_plaat );
-//    $('.relaties img').attr('src', stelselplaat.image_location + 'relaties.png');
-//      $('.relaties img').attr('src', stelselplaat.image_location + 'pijlen.svg');
-
-    }
-    else {
-      filter_active = true;
-
-      // toon objecten
-      for (var i in relaties) {
-        var id = '#' + $.trim(relaties[i][0]) + '_li';
-        if (relaties[i].length > 1) $(id).append('<div class="object">' + relaties[i][1] + '</div>');
-        $(id).stop().animate({ opacity: 1 });
-      }
-
-      // relaties
-      // Linux server is case sensitive, uploading within Joomla convert file name to lowercase and replace a space with _.
-      var image_lowercase = begrip.toLowerCase().replace(/\s/g, '_');
-      $('.relaties img').attr('src', stelselplaat.image_location + image_lowercase + '.png');
-
-      // filter
-      $('.begrippen-filter h2 a').html('Filter op: <em>' + $(this).text() + '</em>');
-      $('.begrippen-filter .active').removeClass('active');
-      $(this).addClass('active');
-    }
-
-    e.preventDefault();
-  });
-}
 
 });
 

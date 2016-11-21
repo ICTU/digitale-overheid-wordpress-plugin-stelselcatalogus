@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="892px" height="502px" viewBox="0 0 892 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
-    <title>bgt</title>
+    <title>bri</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <rect id="path-1" x="0" y="0" width="892" height="502"></rect>
@@ -11,16 +11,16 @@
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="pijlen">
-            <g id="bgt">
+            <g id="bri">
                 <g id="background" stroke="#979797" stroke-width="2">
                     <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
                 </g>
-                <path d="M795,149 L795,211" id="x" stroke="#01689B" stroke-width="4"></path>
-                <path id="x-decoration-1" d="M795,149 L798,159.8 L792,159.8 L795,149 Z" stroke="#01689B" stroke-width="4"></path>
-                <polyline id="Line" stroke="#01689B" stroke-width="4" points="656 150 656 184 736 184"></polyline>
-                <path id="Line-decoration-1" d="M656,150 L659,160.8 L653,160.8 L656,150 Z" stroke="#01689B" stroke-width="4"></path>
-                <polyline id="Line" stroke="#01689B" stroke-width="4" points="720 200 684 200 684 368"></polyline>
-                <path id="Line-decoration-1" d="M720,200 L709.2,203 L709.2,197 L720,200 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M189,150 L189,424" id="line" stroke="#01689B" stroke-width="4"></path>
+                <path id="line-decoration-1" d="M189,150 L192,160.8 L186,160.8 L189,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="line" stroke="#01689B" stroke-width="4" points="312 150 312 251 424 251 424 432"></polyline>
+                <path id="line-decoration-1" d="M312,150 L315,160.8 L309,160.8 L312,150 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="line" stroke="#01689B" stroke-width="4" points="208 152 208 184 72 184 72 428"></polyline>
+                <path id="line-decoration-1" d="M208,152 L211,162.8 L205,162.8 L208,152 Z" stroke="#01689B" stroke-width="4"></path>
             </g>
         </g>
     </g>

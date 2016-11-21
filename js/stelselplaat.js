@@ -13,11 +13,42 @@
  * @link    http://wbvb.nl/themes/wp-rijkshuisstijl/
  */
 
-
 jQuery(document).ready(function ($) {
-
+  
+  
+  // =========================================================================================================
+  
+  // media query event handler
+  if (matchMedia) {
+      var mq = window.matchMedia('(min-width: 1000px)');
+      mq.addListener(WidthChange);
+      WidthChange(mq);
+  }
+  
+  // =========================================================================================================
+  
+  // media query change
+  function WidthChange(mq) {
+      
+    if (mq.matches) {
+      // window width is at least 1000px
+      // don't show menu button
+      console.log('maak de boel interactief');
+    }
+    else {
+      // window width is less than 500px
+      // DO show menu button
+      console.log('Niet-actieve layout');
+    }
+  
+  }
+  
+  // =========================================================================================================
+  
   $('.br').hide();
 
+  
+  // =========================================================================================================
   /**
    * Open popup based on hash
    */
@@ -72,7 +103,9 @@ jQuery(document).ready(function ($) {
       $(this).find('.tabs li').eq(index).find('a').data('time', 0).each(openTab);
     });
   };
-
+  
+  // =========================================================================================================
+  
   var timer, filter_active;
 
   $('.stelsel li>a').hover(function () {
@@ -123,7 +156,9 @@ jQuery(document).ready(function ($) {
       $('.relaties img').attr('src', image_hover_location );
     }, 250);
   });
-
+  
+  // =========================================================================================================
+  
   $('.stelsel li>a').mouseleave(function () {
     if (filter_active) {
       return;
@@ -141,7 +176,9 @@ jQuery(document).ready(function ($) {
       opacity: 1
     }, 'fast');
   });
-
+  
+  // =========================================================================================================
+  
   /* close button */
   $('.close').live('click', function () {
     $(this).parents('li').each(function () {
@@ -156,17 +193,24 @@ jQuery(document).ready(function ($) {
       });
     });
   });
-
+  
+  // =========================================================================================================
+  
   $('.shield').live('click', function () {
     $('.popup .close').click();
   });
+  
+  // =========================================================================================================
+  
   // Change links to the basisregistrations to open the corresponding pop-up.
   // Note that these links don't have an index postfix, so no additional split on '~' is necessary
   $('.zij a').live('click', function () {
     var id = $(this).prop('href').split('#');
     $('#' + id[1] + '_li a').click();
   });
-
+  
+  // =========================================================================================================
+  
 if ( 22 == 33 ) {
   // even geen tabs meer
   /*
@@ -182,7 +226,9 @@ if ( 22 == 33 ) {
   });
 
 }
-
+  
+  // =========================================================================================================
+  
   /**
    * Select a tab based on the hash
    */
@@ -211,7 +257,9 @@ if ( 22 == 33 ) {
       $(this).parents('div').find('.tab').parents('div.popup').parent('li').css('height', 600);
     }
   };
-
+  
+  // =========================================================================================================
+  
   // If the user loaded a page with a prefix # load it. This function is also called when using back button and the popup is not loaded yet
   function hashChange() {
     if(window.location.hash) {
@@ -232,7 +280,6 @@ if ( 22 == 33 ) {
         } else {
           popupElement.each(openPopup);
         }
-
       }
     } else {
       // If there is no hash, close the popup (if open)
@@ -244,6 +291,9 @@ if ( 22 == 33 ) {
 
   // Init page
   hashChange();
+  
+  // =========================================================================================================
+  
 if ( 22 === 33 ) {
   
   $('.stelselplaat').before('<div class="begrippen-filter"><h2><a href="#">Filter op begrippen</a></h2><p>Toon basisregistraties met begrip:</p></div>');

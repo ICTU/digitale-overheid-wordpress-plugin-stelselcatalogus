@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="892px" height="502px" viewBox="0 0 892 502" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>bag</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="892" height="502"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="892" height="502" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pijlen">
+            <g id="bag">
+                <g id="background" stroke="#979797" stroke-width="2" fill="#D8D8D8" opacity="0.242012593">
+                    <use id="Rectangle" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <path d="M641,235 L694,235" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M641,235 L651.8,232 L651.8,238 L641,235 Z" stroke="#01689B" stroke-width="4"></path>
+                <path d="M723,199 L696,199" id="x" stroke="#01689B" stroke-width="4"></path>
+                <path id="x-decoration-1" d="M723,199 L712.2,202 L712.2,196 L723,199 Z" stroke="#01689B" stroke-width="4"></path>
+                <polyline id="Line" stroke="#01689B" stroke-width="4" transform="translate(682.000000, 220.000000) scale(-1, 1) translate(-682.000000, -220.000000) " points="694 58 670 58 670 382"></polyline>
+                <path id="Line-decoration-1" d="M694,58 L683.2,61 L683.2,55 L694,58 Z" stroke="#01689B" stroke-width="4"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -2398,19 +2398,83 @@
 		"oAP": "\/distribute.sh",
 		"oF": 0
 		},
+	"\/html\/BAG.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BAG.html",
+		"oF": 0
+		},
+	"\/html\/BGT.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BGT.html",
+		"oF": 0
+		},
+	"\/html\/BLAU.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BLAU.html",
+		"oF": 0
+		},
+	"\/html\/BRI.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRI.html",
+		"oF": 0
+		},
+	"\/html\/BRK.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRK.html",
+		"oF": 0
+		},
+	"\/html\/BRO.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRO.html",
+		"oF": 0
+		},
+	"\/html\/BRP-i.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRP-i.html",
+		"oF": 0
+		},
+	"\/html\/BRP-ni.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRP-ni.html",
+		"oF": 0
+		},
+	"\/html\/BRT.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRT.html",
+		"oF": 0
+		},
+	"\/html\/BRV.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/BRV.html",
+		"oF": 0
+		},
+	"\/html\/NHR.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/NHR.html",
+		"oF": 0
+		},
+	"\/html\/WOZ.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/html\/WOZ.html",
+		"oF": 0
+		},
 	"\/images\/adres.png": {
 		"ft": 32768,
 		"iS": 10458,
 		"oA": 0,
 		"oAP": "\/images\/adres.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/bag.png": {
-		"ft": 32768,
-		"iS": 2652,
-		"oA": 0,
-		"oAP": "\/images\/bag.png",
 		"oF": 0,
 		"opt": 0
 		},
@@ -2422,22 +2486,6 @@
 		"oF": 0,
 		"opt": 0
 		},
-	"\/images\/bgt.png": {
-		"ft": 32768,
-		"iS": 1830,
-		"oA": 0,
-		"oAP": "\/images\/bgt.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/blau.png": {
-		"ft": 32768,
-		"iS": 1908,
-		"oA": 0,
-		"oAP": "\/images\/blau.png",
-		"oF": 0,
-		"opt": 0
-		},
 	"\/images\/blauwepijl.gif": {
 		"ft": 4194304,
 		"iS": 53,
@@ -2446,67 +2494,11 @@
 		"oF": 0,
 		"opt": 0
 		},
-	"\/images\/bri.png": {
-		"ft": 32768,
-		"iS": 4021,
-		"oA": 0,
-		"oAP": "\/images\/bri.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/brk.png": {
-		"ft": 32768,
-		"iS": 3124,
-		"oA": 0,
-		"oAP": "\/images\/brk.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/bro.png": {
-		"ft": 32768,
-		"iS": 1570,
-		"oA": 0,
-		"oAP": "\/images\/bro.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/brp-i.png": {
-		"ft": 32768,
-		"iS": 2738,
-		"oA": 0,
-		"oAP": "\/images\/brp-i.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/brp-ni.png": {
-		"ft": 32768,
-		"iS": 4745,
-		"oA": 0,
-		"oAP": "\/images\/brp-ni.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/brt.png": {
-		"ft": 32768,
-		"iS": 1659,
-		"oA": 0,
-		"oAP": "\/images\/brt.png",
-		"oF": 0,
-		"opt": 0
-		},
 	"\/images\/brt_fout.png": {
 		"ft": 32768,
 		"iS": 2692,
 		"oA": 0,
 		"oAP": "\/images\/brt_fout.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/brv.png": {
-		"ft": 32768,
-		"iS": 2006,
-		"oA": 0,
-		"oAP": "\/images\/brv.png",
 		"oF": 0,
 		"opt": 0
 		},
@@ -2592,6 +2584,14 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/images\/legenda-invoervelden.png": {
+		"ft": 32768,
+		"iS": 337218,
+		"oA": 0,
+		"oAP": "\/images\/legenda-invoervelden.png",
+		"oF": 0,
+		"opt": 0
+		},
 	"\/images\/legenda.png": {
 		"ft": 32768,
 		"iS": 3977,
@@ -2605,14 +2605,6 @@
 		"iS": 0,
 		"oA": 0,
 		"oAP": "\/images\/natuurlijk_persoon.png",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/images\/nhr.png": {
-		"ft": 32768,
-		"iS": 0,
-		"oA": 0,
-		"oAP": "\/images\/nhr.png",
 		"oF": 0,
 		"opt": 0
 		},
@@ -2657,6 +2649,228 @@
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
+		},
+	"\/images\/pijlenschemas-origineel\/bag.png": {
+		"ft": 32768,
+		"iS": 2652,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/bag.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/bgt.png": {
+		"ft": 32768,
+		"iS": 1830,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/bgt.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/blau.png": {
+		"ft": 32768,
+		"iS": 1908,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/blau.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/bri.png": {
+		"ft": 32768,
+		"iS": 4021,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/bri.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/brk.png": {
+		"ft": 32768,
+		"iS": 3124,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/brk.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/bro.png": {
+		"ft": 32768,
+		"iS": 1570,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/bro.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/brp-i.png": {
+		"ft": 32768,
+		"iS": 2738,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/brp-i.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/brp-ni.png": {
+		"ft": 32768,
+		"iS": 4745,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/brp-ni.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/brt.png": {
+		"ft": 32768,
+		"iS": 1659,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/brt.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/brv.png": {
+		"ft": 32768,
+		"iS": 2006,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/brv.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/nhr.png": {
+		"ft": 32768,
+		"iS": 3012,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/nhr.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas-origineel\/woz.png": {
+		"ft": 32768,
+		"iS": 2839,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas-origineel\/woz.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/bag.png": {
+		"ft": 32768,
+		"iS": 2652,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/bag.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/bag.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/bag.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/images\/pijlenschemas\/bgt.png": {
+		"ft": 32768,
+		"iS": 1830,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/bgt.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/bgt.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/bgt.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/images\/pijlenschemas\/blau.png": {
+		"ft": 32768,
+		"iS": 1908,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/blau.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/images\/pijlenschemas\/blau.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/images\/pijlenschemas\/blau.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/images\/pijlenschemas\/bri.png": {
+		"ft": 32768,
+		"iS": 4021,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/bri.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/brk.png": {
+		"ft": 32768,
+		"iS": 3124,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/brk.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/bro.png": {
+		"ft": 32768,
+		"iS": 1570,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/bro.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/brp-i.png": {
+		"ft": 32768,
+		"iS": 2738,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/brp-i.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/brp-ni.png": {
+		"ft": 32768,
+		"iS": 4745,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/brp-ni.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/brt.png": {
+		"ft": 32768,
+		"iS": 1659,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/brt.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/brv.png": {
+		"ft": 32768,
+		"iS": 2006,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/brv.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/nhr.png": {
+		"ft": 32768,
+		"iS": 0,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/nhr.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/images\/pijlenschemas\/woz.png": {
+		"ft": 32768,
+		"iS": 0,
+		"oA": 0,
+		"oAP": "\/images\/pijlenschemas\/woz.png",
+		"oF": 0,
+		"opt": 1
 		},
 	"\/images\/relaties-zww.png": {
 		"ft": 32768,
@@ -2706,14 +2920,6 @@
 		"oF": 0,
 		"opt": 1
 		},
-	"\/images\/woz.png": {
-		"ft": 32768,
-		"iS": 0,
-		"oA": 0,
-		"oAP": "\/images\/woz.png",
-		"oF": 0,
-		"opt": 1
-		},
 	"\/inc\/cmb2-check-required-fields.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -2735,7 +2941,7 @@
 	"\/js\/jquery.ba-hashchange.min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/js\/min\/jquery.ba-hashchange.min-min.js",
 		"oF": 0,
 		"sC": 1,
@@ -2758,6 +2964,24 @@
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
+		},
+	"\/languages\/nl_NL.mo": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/languages\/nl_NL.mo",
+		"oF": 0
+		},
+	"\/languages\/nl_NL.po": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/languages\/nl_NL.po",
+		"oF": 0
+		},
+	"\/languages\/rhswp-stelselcatalogus.pot": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/languages\/rhswp-stelselcatalogus.pot",
+		"oF": 0
 		},
 	"\/less\/00-palet.less": {
 		"aP": 0,
@@ -2893,6 +3117,14 @@
 		}
 	],
 "manualImportLinks": {
+	"\/js\/stelselplaat.js": [
+		{
+			"followForSyntaxChecking": 1,
+			"linkedFileAbbreviatedPath": "\/js\/jquery.ba-hashchange.min.js",
+			"position": 0,
+			"type": 0
+			}
+		]
 	},
 "projectAttributes": {
 	"creationDate": 500828142,

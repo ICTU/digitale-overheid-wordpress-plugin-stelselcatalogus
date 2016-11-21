@@ -6,7 +6,7 @@
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
  * Version:       0.0.2
- * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
+ * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+

@@ -7,8 +7,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.3
- * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
+ * Version:       0.0.4
+ * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -24,15 +24,15 @@ if ( is_page( ) ) {
   //* Force full-width-content layout
   add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
   
-  // Add hook for front-end <head></head>
+//  add_action( 'genesis_after_loop', 'rhswp_stelselplaat_add_search_description', 10 );
+
+  add_action( 'genesis_entry_content', 'rhswp_stelselplaat_add_search_description', 9 );
+
+
+  add_action( 'wp_enqueue_scripts', 'rhswp_stelselplaat_header_enqueue_js_css' );
+
+  // Add hook for footer
   add_action('wp_footer', 'rhswp_stelselplaat_js_in_footer');
-
-
-  add_action( 'genesis_after_loop', 'rhswp_stelselplaat_add_search_description', 10 );
-
-  add_action( 'genesis_after_loop', 'rhswp_stelselplaat_encapsulate_end', 11 );
-
-  add_action( 'wp_enqueue_scripts', 'rhswp_stelselplaat_template_css' );
 
 }
 
@@ -45,118 +45,40 @@ if ( is_page( ) ) {
 
 genesis();
 
-function rhswp_stelselplaat_template_css() {
+function rhswp_stelselplaat_header_enqueue_js_css() {
 
-  $custom_css = '
-@charset "UTF-8";
-/* CSS Document */
-
-  #BRV_li {
-    top: 15px;
-    left: 20px;
-    width: 110px;
-  }
-  #BRI_li {
-    top: 15px;
-    left: 150px;
-    width: 110px;
-  }
-  #BLAU_li {
-    top: 15px;
-    left: 280px;
-    width: 110px;
-  }
-  #BRK_li {
-    top: 15px;
-    left: 440px;
-    width: 225px; /* 17%; */
-  }
+  $custom_css = '';
   
-  #BRT_li {
-    top: 15px;
-    left: 725px;
-  }
-  #BGT_li {
-    top: 160px;
-    left: 725px;
-    height: 75px;
-  }
-  #BRO_li {
-    top: 255px;
-    left: 725px;
-    height: 75px;
-  }
-  #WOZ_li {
-    top: 175px;
-    left: 505px;
-    width: 125px;
-  }
-  #BAG_li {
-    top: 355px;
-    left: 625px;
-    width: 245px;
-  }
-  #NHR_li {
-    top: 355px;
-    left: 345px;
-    width: 120px;
-  }
-  #BRP_li {
-    top: 355px;
-    left: 20px;
-    width: 245px;
-  }
-  #BRP-ni_li {
-    top: 395px;
-    left: 30px;
-    width: 110px;
-    border: 1px solid #fff;
-    height: 60px;
-  }
-  #BRP-i_li {
-    top: 395px;
-    left: 145px;
-    width: 110px;
-    border: 1px solid #fff;
-    height: 60px;
-  }
-  .leverancier ul + p {
-    margin: 7px -1px 0 !important;
-    line-height: 1em;
-    font-size: 10px;
-  }
-  .gereed .leverancier ul + p {
-    background: #C3DBB6;
-    border-color: #39870C;
-  }
-  .nietgereed .leverancier ul + p {
-    background: #FDF6BB;
-    border-color: #F9E11E;
-  }
-  #NHR_li .object {
-    top: -105px;
-  }
-  #BRP-ni_li .object {
-    top: -7px;
-  }
-  #BRP-i_li .object {
-    top: -7px;
-  }
-  .mod.box .zij > ul > li {
-    width: 63px;
-  }
+  // general custom CSS
+  $stelselplaat_css    = get_field('stelselplaat_css', 'option');
+	if ( $stelselplaat_css ) {
+		$custom_css .= $stelselplaat_css;
+	}
+
+  // CSS per bouwsteen
+  if( have_rows('stelselplaat_bouwstenen', 'option') ): 
+
+    while( have_rows('stelselplaat_bouwstenen', 'option') ): the_row(); 
   
-  ';
+  		// vars
+  		$stelselplaat_bouwsteen_css      = get_sub_field('stelselplaat_bouwsteen_css');
+  		if ( $stelselplaat_bouwsteen_css ) {
+    		$custom_css .= $stelselplaat_bouwsteen_css;
+  		}
+
+    endwhile; 
+
+  endif; 
   
-	wp_enqueue_style( DO_STELSELPLAAT_FOLDER, DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat.css'	);
+  // enqueue style and the variable CSS
+	wp_enqueue_style( 'stelselplaat-css', DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat.css'	);
+  wp_add_inline_style( 'stelselplaat-css', $custom_css );  
 
-//	wp_enqueue_style( DO_STELSELPLAAT_FOLDER, DO_STELSELPLAAT_BASE_URL . 'css/oude-css.css'	);
+//  wp_enqueue_script( 'stelselplaat-lib', DO_STELSELPLAAT_BASE_URL . 'js/jquery.ba-hashchange.min.js', array( 'jquery' ) );
+//  wp_enqueue_script( 'stelselplaat', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
 
-  wp_add_inline_style( DO_STELSELPLAAT_FOLDER, $custom_css );  
-
-  wp_enqueue_script( 'stelselplaat-lib', DO_STELSELPLAAT_BASE_URL . 'js/jquery.ba-hashchange.min.js', array( 'jquery' ) );
-  wp_enqueue_script( 'stelselplaat', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
-
+  // enqueue minified JS
+  wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
 
   
 }
@@ -166,20 +88,20 @@ function rhswp_stelselplaat_js_in_footer() {
 
   $stelselplaat_pijlenschema        = get_field('stelselplaat_pijlenschema', 'option');
   $basisplaat                       = $stelselplaat_pijlenschema['url'];
-  $stelselplaat_json                = strip_tags( get_field('stelselplaat_json', 'option') );
-  $stelselplaat_begrippenrelaties   = strip_tags( get_field('stelselplaat_begrippenrelaties', 'option') );
+  $stelselplaat_json                = preg_replace('/\s+/', '', strip_tags( get_field('stelselplaat_json', 'option') ) );
+  $stelselplaat_begrippenrelaties   = preg_replace('/\s+/', '', strip_tags( get_field('stelselplaat_begrippenrelaties', 'option') ) );
   $stelselplaat_image_location      = get_field('stelselplaat_image_location', 'option');
 
 
   // add css to header  
   echo '<script type="text/javascript">
-var fileref=document.createElement("link");
-fileref.setAttribute("rel", "stylesheet");
-fileref.setAttribute("type", "text/css");
-fileref.setAttribute("href", "' . DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat-js-enabled.css?v2");
-document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat = stelselplaat || {};';
+    var fileref=document.createElement("link");
+    fileref.setAttribute("rel", "stylesheet");
+    fileref.setAttribute("type", "text/css");
+    fileref.setAttribute("href", "' . DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat-js-enabled.css?v2");
+    document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat = stelselplaat || {};';
 
-  echo "\n jQuery(document).ready(function($) {";
+  echo "\n jQuery(document).ready(function($) {\n";
 
   
   if ( $stelselplaat_json ) {
@@ -188,25 +110,49 @@ document.getElementsByTagName("head")[0].appendChild(fileref);var stelselplaat =
   }
     
   if ( $stelselplaat_begrippenrelaties ) {
-    echo "\n stelselplaat.begrippen_relations = jQuery.parseJSON('" . $stelselplaat_begrippenrelaties . "');";
+    echo "\n stelselplaat.begrippen_relations = jQuery.parseJSON('" . $stelselplaat_begrippenrelaties . "');\n";
   }
   
   if ( $stelselplaat_image_location ) {
-    echo 'stelselplaat.image_location =  \'' . $stelselplaat_image_location . '\';';
+    echo 'stelselplaat.image_location =  "' . $stelselplaat_image_location . "\";\n";
+  }
+  else {
+    echo 'stelselplaat.image_location =  "' . DO_STELSELPLAAT_BASE_URL . "images/pijlenschemas/\";\n";
   }
   
   if ( $basisplaat ) {
-    echo "\n stelselplaat.basis_plaat =  \"" . $basisplaat . '";';
+    echo "stelselplaat.basis_plaat =  \"" . $basisplaat . "\";\n";
   }
+  
+  if( have_rows('stelselplaat_bouwstenen', 'option') ): 
 
-  echo '});</script>';
+    while( have_rows('stelselplaat_bouwstenen', 'option') ): the_row(); 
+  
+  		// vars
+  		$stelselplaat_bouwsteen_id      = get_sub_field('stelselplaat_bouwsteen_id');
+  		$stelselplaat_pijlenschema      = get_sub_field('stelselplaat_bouwsteen_pijlenschema_voor_hover');
+      $basisplaat                     = $stelselplaat_pijlenschema['url'];
+      
+      if ( $basisplaat ) {
+        echo 'stelselplaat.hoverimages_' . strtolower($stelselplaat_bouwsteen_id) . ' =  "' . $basisplaat . "\";\n";
+      }
+  
+    endwhile; 
+
+  endif; 
+
+  echo "});\n</script>";
 
 
 }
 
 function rhswp_stelselplaat_encapsulate_start() {
 
+  $stelselplaat_introductie   = get_field('stelselplaat_introductie', 'option');
+  echo $stelselplaat_introductie;
+
   echo '<div id="kolom2">';
+  
   echo '<div id="adaptoratio">';
 
 
@@ -228,64 +174,109 @@ function rhswp_stelselplaat_add_search_description() {
 
 	
   echo '<div id="page" class="stelselplaat">';
+  echo rhswp_stelselplaat_encapsulate_start();
   destelselplaat();
+  echo rhswp_stelselplaat_encapsulate_end();
   
 }
 
 function destelselplaat() {
 
-echo rhswp_stelselplaat_encapsulate_start();
-
-if ( stelselplaat_introductie )
-
-if( get_field('stelselplaat_veld_basis', 'option') ) {
   
-  $needle = '__IMAGE__';
   
-  $stelselplaat_veld_basis    = get_field('stelselplaat_veld_basis', 'option');
   $stelselplaat_pijlenschema  = get_field('stelselplaat_pijlenschema', 'option');
+  $stelselplaat_veld_basis    = get_field('stelselplaat_veld_basis', 'option');
   $stelselplaat_legenda       = get_field('stelselplaat_legenda', 'option');
   
-  
+  if( $stelselplaat_pijlenschema ) {
 
+    $needle                     = '__IMAGE__';
+    $replacer                   = $stelselplaat_pijlenschema['url'];
+    $stelselplaat_veld_basis    = str_replace( $needle, $replacer, $stelselplaat_veld_basis);
 
-  $replacer                   = $stelselplaat_pijlenschema['url'];
-
-  $stelselplaat_veld_basis    = str_replace( $needle, $replacer, $stelselplaat_veld_basis);
-
+  }
+  else {
+    
+    $stelselplaat_veld_basis = '<ul class="stelsel">
+      <li id="BRP_li" class="gereed"><em>Basisregistratie</em> <strong>Personen</strong></li>
+      <li class="relaties"><img src="' . DO_STELSELPLAAT_BASE_URL . 'images/relaties-zww.png" alt="Relaties in het stelsel" /></li>
+      <li id="BRV_li" class="gereed"><a href="#BRV"><em>Basisregistratie</em> <strong>Voertuigen</strong></a></li>
+      <li id="BRI_li" class="gereed"><a href="#BRI"><em>Basisregistratie</em> <strong>Inkomen</strong></a></li>
+      <li id="BLAU_li" class="nietgereed"><a href="#BLAU"><strong><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></strong></a></li>
+      <li id="BRK_li" class="gereed"><a href="#BRK"><em>Basisregistratie</em> <strong>Kadaster</strong></a></li>
+      <li id="BRT_li" class="gereed"><a href="#BRT"><em>Basisregistratie</em> <strong>Topografie</strong></a></li>
+      <li id="BGT_li" class="nietgereed"><a href="#BGT"><em>Basisregistratie</em> <strong>Grootschalige topografie</strong></a></li>
+      <li id="BRO_li" class="nietgereed"><a href="#BRO"><em>Basisregistratie</em> <strong>Ondergrond</strong></a></li>
+      <li id="BAG_li" class="gereed"><a href="#BAG"><em>Basisregistraties</em> <strong>Adressen en Gebouwen</strong> </a></li>
+      <li id="WOZ_li" class="gereed"><a href="#WOZ"><em>Basisregistratie</em> <strong><abbr title="Waarde Onroerende Zaken">WOZ</abbr></strong></a></li>
+      <li id="NHR_li" class="gereed"><a href="#NHR"><strong>Handelsregister</strong></a></li>
+      <li id="BRP-ni_li" class="gereed"><a href="#BRP-ni"> <strong>niet-ingezetenen</strong> </a></li>
+      <li id="BRP-i_li" class="gereed"><a href="#BRP-i"> <strong>ingezetenen</strong> </a></li>
+    </ul>';
+    
+  }
 
   echo $stelselplaat_veld_basis;
   echo $stelselplaat_legenda;
-}
-else {
-  
-  echo '<ul class="stelsel">
-    <li id="BRP_li" class="gereed"><em>Basisregistratie</em> <strong>Personen</strong></li>
-    <li class="relaties"><img src="' . DO_STELSELPLAAT_BASE_URL . 'images/relaties-zww.png" alt="Relaties in het stelsel" /></li>
-    <li id="BRV_li" class="gereed"><a href="#BRV"><em>Basisregistratie</em> <strong>Voertuigen</strong></a></li>
-    <li id="BRI_li" class="gereed"><a href="#BRI"><em>Basisregistratie</em> <strong>Inkomen</strong></a></li>
-    <li id="BLAU_li" class="nietgereed"><a href="#BLAU"><strong><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></strong></a></li>
-    <li id="BRK_li" class="gereed"><a href="#BRK"><em>Basisregistratie</em> <strong>Kadaster</strong></a></li>
-    <li id="BRT_li" class="gereed"><a href="#BRT"><em>Basisregistratie</em> <strong>Topografie</strong></a></li>
-    <li id="BGT_li" class="nietgereed"><a href="#BGT"><em>Basisregistratie</em> <strong>Grootschalige topografie</strong></a></li>
-    <li id="BRO_li" class="nietgereed"><a href="#BRO"><em>Basisregistratie</em> <strong>Ondergrond</strong></a></li>
-    <li id="BAG_li" class="gereed"><a href="#BAG"><em>Basisregistraties</em> <strong>Adressen en Gebouwen</strong> </a></li>
-    <li id="WOZ_li" class="gereed"><a href="#WOZ"><em>Basisregistratie</em> <strong><abbr title="Waarde Onroerende Zaken">WOZ</abbr></strong></a></li>
-    <li id="NHR_li" class="gereed"><a href="#NHR"><strong>Handelsregister</strong></a></li>
-    <li id="BRP-ni_li" class="gereed"><a href="#BRP-ni"> <strong>niet-ingezetenen</strong> </a></li>
-    <li id="BRP-i_li" class="gereed"><a href="#BRP-i"> <strong>ingezetenen</strong> </a></li>
-  </ul>
-  <ul class="legenda">
-    <li class="gereed">Gereed</li>
-    <li class="nietgereed">Niet gereed</li>
-    <li class="legenda_geo">Bevat geometrie</li>
-    <li><a href="/onderwerpen/stelselinformatiepunt/stelselthemas/verbindingen/verbindingen-tussen-basisregistraties/toelichting-interactieve-stelselplaat">Toelichting</a></li>
-  </ul>';
-  
-}
 
+  // bouwstenen
+  if( have_rows('stelselplaat_bouwstenen', 'option') ): 
+  
+    while( have_rows('stelselplaat_bouwstenen', 'option') ): the_row(); 
+  
+  		// vars
+  		$stelselplaat_bouwsteen_id              = get_sub_field('stelselplaat_bouwsteen_id');
+  		$stelselplaat_bouwsteen_heading         = get_sub_field('stelselplaat_bouwsteen_heading');
+  		$stelselplaat_bouwsteen_titel_abbr      = get_sub_field('stelselplaat_bouwsteen_titel_abbr');
+  		$stelselplaat_bouwsteen_inhoud          = get_sub_field('stelselplaat_bouwsteen_inhoud');
+  		$stelselplaat_bouwsteen_ik              = get_sub_field('stelselplaat_bouwsteen_ik');
+  		$stelselplaat_bouwsteen_zij_links       = get_sub_field('stelselplaat_bouwsteen_zij_maakt_gebruik_van');
+  		$stelselplaat_bouwsteen_zij_rechts      = get_sub_field('stelselplaat_bouwsteen_zij_wordt_gebruikt_door');
+  		$stelselplaat_bouwsteen_leverancier     = get_sub_field('stelselplaat_bouwsteen_leverancier');
+  		$stelselplaat_bouwsteen_gepubliceerd    = get_sub_field('stelselplaat_bouwsteen_gepubliceerd');
+    
+      if ( 'gepubliceerd' == $stelselplaat_bouwsteen_gepubliceerd && $stelselplaat_bouwsteen_id ) {
 
-echo '<div id="BAG" class="br BAG hide_js">
+        $needle                     = '__GEOMETRIE__';
+        $replacer                   = '<img class="geometrie" src="' . DO_STELSELPLAAT_BASE_URL . 'images/geo.svg" alt="Icon - Bevat geometrie" width="20" height="20" />';
+        $stelselplaat_bouwsteen_ik            = str_replace( $needle, $replacer, $stelselplaat_bouwsteen_ik);
+        $stelselplaat_bouwsteen_zij_links     = str_replace( $needle, $replacer, $stelselplaat_bouwsteen_zij_links);
+        $stelselplaat_bouwsteen_zij_rechts    = str_replace( $needle, $replacer, $stelselplaat_bouwsteen_zij_rechts);
+
+        echo '<div id="' . $stelselplaat_bouwsteen_id . '" class="br ' . $stelselplaat_bouwsteen_id . ' hide_js">
+            <h2>' . $stelselplaat_bouwsteen_heading . '</h2>
+            <div class="statusBasisregistratie">' . $stelselplaat_bouwsteen_inhoud . '</div>
+            <div class="zij maakt-gebruik-van">
+              <h3>' . $stelselplaat_bouwsteen_titel_abbr . ' ' . __( 'maakt gebruik van', 'rhswp-stelselcatalogus' ) . '</h3>
+              ' . $stelselplaat_bouwsteen_zij_links . '
+            </div>
+            <div class="ik">
+              <h3>' . $stelselplaat_bouwsteen_titel_abbr . '</h3>
+              ' . $stelselplaat_bouwsteen_ik . '
+            </div>
+            <div class="zij wordt-gebruikt-door">
+              <h3>' . $stelselplaat_bouwsteen_titel_abbr . ' ' . __( 'wordt gebruikt door', 'rhswp-stelselcatalogus' ) . '</h3>
+              ' . $stelselplaat_bouwsteen_zij_rechts . '
+            </div>
+            <div class="leverancier">
+              <h3>' . $stelselplaat_bouwsteen_titel_abbr . ' ' . __( 'levert de volgende gegevens door', 'rhswp-stelselcatalogus' ) . '</h3>
+              ' . $stelselplaat_bouwsteen_leverancier . '
+            </div>
+          </div>
+        ';
+      }
+  
+  
+    endwhile; 
+  
+  
+  endif; 
+
+if ( 22 == 33 ) {
+  
+echo '
+
+<div id="BAG" class="br BAG hide_js">
   <h2><em>Basisregistraties</em> Adressen en Gebouwen</h2>
   <div class="tab">
     <h2><abbr title="Basisregistraties Adressen en Gebouwen">BAG</abbr></h2>
@@ -920,6 +911,8 @@ echo '<div id="BAG" class="br BAG hide_js">
 </div>
 
 ';
+
+}
 
   
 }

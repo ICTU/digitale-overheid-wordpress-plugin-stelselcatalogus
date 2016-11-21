@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.3
- * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
+ * Version:       0.0.4
+ * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -98,8 +98,29 @@ jQuery(document).ready(function ($) {
       obj.parent().css('z-index', 9);
 
       // Linux server is case sensitive, uploading within Joomla convert file name to lowercase.
-      var image_lowercase = $selector.toLowerCase();
-      $('.relaties img').attr('src', stelselplaat.image_location + image_lowercase + '.png');
+      var image_lowercase       = $selector.toLowerCase();
+      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.png';
+
+
+      var theKey = 'hoverimages_'  + image_lowercase;
+      
+      console.log('Checking: ' + theKey );
+      
+      if(typeof stelselplaat[theKey] === 'undefined') {
+          // does not exist
+//          console.log('Does not exist! ' + theKey );
+      }
+      else {
+          // does exist
+//          console.log('Does actually exist! ' + theKey );
+          image_hover_location  = stelselplaat[theKey];
+    
+      }
+      
+//      console.log("D'r wordt gehoverd en dit moet 'm zijn: " + image_hover_location );
+      console.log(image_hover_location);
+      
+      $('.relaties img').attr('src', image_hover_location );
     }, 250);
   });
 
@@ -146,6 +167,8 @@ jQuery(document).ready(function ($) {
     $('#' + id[1] + '_li a').click();
   });
 
+if ( 22 == 33 ) {
+  // even geen tabs meer
   /*
    * Tabs
    */
@@ -157,6 +180,8 @@ jQuery(document).ready(function ($) {
       $(this).remove();
     });
   });
+
+}
 
   /**
    * Select a tab based on the hash

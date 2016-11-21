@@ -6,8 +6,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.3
- * Version desc:  Blokken donkerblauw_vol gemaakt. Velden via ACF.
+ * Version:       0.0.4
+ * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -135,12 +135,12 @@
           padding: 10px;
         }
       
-        div.statusDoorlevering,
-        .statusBasisregistratie,
-        .zij li:hover div.statusVerbinding,
-        .zij div.statusVerbinding {
-          display: none;
-        }
+//        div.statusDoorlevering,
+//        .statusBasisregistratie,
+//        .zij li:hover div.statusVerbinding,
+//        .zij div.statusVerbinding {
+//          display: none;
+//        }
 
         .close {
           position: absolute;
@@ -420,7 +420,7 @@
         text-align: right;
         padding-right: 1em;
       }
-       
+
        &:before, 
        &:after {
          width: 1.5em;
@@ -440,12 +440,8 @@
         }  
       
       div.statusVerbinding {
-        position: absolute;
-        padding: 2px;
-        text-align: center;
-        margin-top: 2px;
-        border: 1px solid @bg_ik;
-        margin-left: 80px;
+        display: none;
+        visibility: hidden;
       }
 
       &.gereed div.statusVerbinding {
@@ -475,15 +471,6 @@
     }    
   }
   
-  .tab > .zij {
-    li  {
-       &:after {
-         content: ' ';
-         display: block;
-       }
-    }
-  } 
-
   .ik {
     float: left;
     padding: .5em;
@@ -499,31 +486,39 @@
         margin: .2px;
       }
     }    
-    
-    & + .zij {
-      li {
-        a {
-          right: auto;
-          left: 1em;
-          text-align: left;
-          padding-left: 1em;
-          padding-right: inherit;
-        }
-
-         &:after {
-           content: '';
-           display: none;
-         }
-         &:before {
-           content: ' ';
-           display: block;
-           left: 0;
-           right: auto;
-         }
+  }
+  .wordt-gebruikt-door {
+    li {
+      a {
+        right: auto;
+        left: 1em;
+        text-align: left;
+        padding-left: 1em;
+        padding-right: inherit;
       }
+       &:before {
+         content: ' ';
+         display: block;
+         left: 0;
+         right: auto;
+       }
     }
   }
-
+  .maakt-gebruik-van {
+    li {
+      a {
+        right: 1em;
+        text-align: left;
+        padding-left: 1em;
+        padding-right: inherit;
+      }
+       &:after {
+         content: ' ';
+         display: block;
+         right: 0;
+       }
+    }
+  }
   
   .leverancier {
     clear: both;
@@ -640,23 +635,24 @@
   /* Legenda */
   .legenda {
     vertical-align: top;
-    background: @grijs_2;
-    padding: 10px;
+    background: @wit;
+    padding: 1em;
+    margin-right: 20px;
   
     &, li {
       list-style-type: none;
       float: right;
-      margin-right: 20px;
+    }
+    li + li { 
+      margin-top: 0.5em;
     }
     li {
       background: none;
       position: relative;
-      margin-bottom: 0.5em;
       float: none;
       overflow: hidden;
       height: 2rem;
       line-height: 1.6;
-      
 
       &.gereed,
       &.nietgereed {

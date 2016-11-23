@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.5
- * Version desc:  SVG pijlen; mediaquery in JS. 
+ * Version:       0.0.6
+ * Version desc:  Fallbacks voor pijlenschema. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+

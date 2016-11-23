@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.4
- * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
+ * Version:       0.0.6
+ * Version desc:  Fallbacks voor pijlenschema. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -569,11 +569,6 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 	width: 110px;
 	border: 1px solid #fff;
 	height: 60px;
-}
-.leverancier ul + p {
-	margin: 7px -1px 0 !important;
-	line-height: 1em;
-	font-size: 10px;
 }
 #NHR_li .object {
 	top: -105px;

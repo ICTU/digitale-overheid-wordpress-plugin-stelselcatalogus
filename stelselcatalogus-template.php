@@ -7,8 +7,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.4
- * Version desc:  ACF velden aangepast. Waarden invoerdbaar.
+ * Version:       0.0.6
+ * Version desc:  Fallbacks voor pijlenschema. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -74,9 +74,6 @@ function rhswp_stelselplaat_header_enqueue_js_css() {
 	wp_enqueue_style( 'stelselplaat-css', DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat.css'	);
   wp_add_inline_style( 'stelselplaat-css', $custom_css );  
 
-//  wp_enqueue_script( 'stelselplaat-lib', DO_STELSELPLAAT_BASE_URL . 'js/jquery.ba-hashchange.min.js', array( 'jquery' ) );
-//  wp_enqueue_script( 'stelselplaat', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
-
   // enqueue minified JS
   wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
 
@@ -123,6 +120,10 @@ function rhswp_stelselplaat_js_in_footer() {
   
   if ( $basisplaat ) {
     echo "stelselplaat.basis_plaat =  \"" . $basisplaat . "\";\n";
+  }
+  else {
+    echo "stelselplaat.basis_plaat =  \"" . DO_STELSELPLAAT_BASE_URL . "images/pijlenschemas/pijlen.svg\";\n";
+//    echo "stelselplaat.basis_plaat =  \"" . DO_STELSELPLAAT_BASE_URL . "images/pijlenschemas/pijlen.png\";\n";
   }
   
   if( have_rows('stelselplaat_bouwstenen', 'option') ): 
@@ -188,34 +189,18 @@ function destelselplaat() {
   $stelselplaat_pijlenschema  = get_field('stelselplaat_pijlenschema', 'option');
   $stelselplaat_veld_basis    = get_field('stelselplaat_veld_basis', 'option');
   $stelselplaat_legenda       = get_field('stelselplaat_legenda', 'option');
+
+  $needle                     = '__IMAGE__';
   
   if( $stelselplaat_pijlenschema ) {
-
-    $needle                     = '__IMAGE__';
     $replacer                   = $stelselplaat_pijlenschema['url'];
-    $stelselplaat_veld_basis    = str_replace( $needle, $replacer, $stelselplaat_veld_basis);
-
   }
   else {
-    
-    $stelselplaat_veld_basis = '<ul class="stelsel">
-      <li id="BRP_li" class="gereed"><em>Basisregistratie</em> <strong>Personen</strong></li>
-      <li class="relaties"><img src="' . DO_STELSELPLAAT_BASE_URL . 'images/relaties-zww.png" alt="Relaties in het stelsel" /></li>
-      <li id="BRV_li" class="gereed"><a href="#BRV"><em>Basisregistratie</em> <strong>Voertuigen</strong></a></li>
-      <li id="BRI_li" class="gereed"><a href="#BRI"><em>Basisregistratie</em> <strong>Inkomen</strong></a></li>
-      <li id="BLAU_li" class="nietgereed"><a href="#BLAU"><strong><abbr title="Basisregistratie Lonen Arbeidsverhoudingen en Uitkeringen">BLAU</abbr></strong></a></li>
-      <li id="BRK_li" class="gereed"><a href="#BRK"><em>Basisregistratie</em> <strong>Kadaster</strong></a></li>
-      <li id="BRT_li" class="gereed"><a href="#BRT"><em>Basisregistratie</em> <strong>Topografie</strong></a></li>
-      <li id="BGT_li" class="nietgereed"><a href="#BGT"><em>Basisregistratie</em> <strong>Grootschalige topografie</strong></a></li>
-      <li id="BRO_li" class="nietgereed"><a href="#BRO"><em>Basisregistratie</em> <strong>Ondergrond</strong></a></li>
-      <li id="BAG_li" class="gereed"><a href="#BAG"><em>Basisregistraties</em> <strong>Adressen en Gebouwen</strong> </a></li>
-      <li id="WOZ_li" class="gereed"><a href="#WOZ"><em>Basisregistratie</em> <strong><abbr title="Waarde Onroerende Zaken">WOZ</abbr></strong></a></li>
-      <li id="NHR_li" class="gereed"><a href="#NHR"><strong>Handelsregister</strong></a></li>
-      <li id="BRP-ni_li" class="gereed"><a href="#BRP-ni"> <strong>niet-ingezetenen</strong> </a></li>
-      <li id="BRP-i_li" class="gereed"><a href="#BRP-i"> <strong>ingezetenen</strong> </a></li>
-    </ul>';
-    
+    $replacer                   = DO_STELSELPLAAT_BASE_URL . "images/pijlenschemas/pijlen.svg";
+//    $replacer                   = DO_STELSELPLAAT_BASE_URL . "images/pijlenschemas/pijlen.png";
   }
+
+  $stelselplaat_veld_basis    = str_replace( $needle, $replacer, $stelselplaat_veld_basis);
 
   echo $stelselplaat_veld_basis;
   echo $stelselplaat_legenda;

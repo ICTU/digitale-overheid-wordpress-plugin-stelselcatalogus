@@ -4548,7 +4548,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/digitaleoverheid-accept.gebruikercentraal.co.uk\/",
+	"externalServerAddress": "http:\/\/digitaleoverheid.gebruikercentraal.co.uk\/",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",

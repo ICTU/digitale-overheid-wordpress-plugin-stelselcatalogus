@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.6
- * Version desc:  Fallbacks voor pijlenschema. 
+ * Version:       0.1.1
+ * Version desc:  Volgende slag: pijlenschema opgeschoond. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -34,15 +34,20 @@ jQuery(document).ready(function ($) {
     if (mq.matches) {
       // window width is at least 900px
       // don't show menu button
-//      console.log('maak de boel interactief');
+      // console.log('maak de boel interactief');
       $('.br').hide();
       doPopupWindows = true;  
     }
     else {
       // window width is less than 900px
       // DO show menu button
-//      console.log('Niet-actieve layout');
+      // console.log('Niet-actieve layout');
       $('.br').show();
+
+      $(this).parents('.br').each(function () {
+        $(this).show();
+      });
+      
       doPopupWindows = false;  
       $('.popup .close').click();
 
@@ -60,7 +65,7 @@ jQuery(document).ready(function ($) {
    */
   function openPopup() {
 
-    if ( doPopupWindows ) {
+//    if ( doPopupWindows ) {
         
       // close filters
       $('.begrippen-filter h2').siblings().slideUp();
@@ -98,21 +103,17 @@ jQuery(document).ready(function ($) {
       $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
         top: 10,
         left: 150,
-        height: 600,
-        width: 600
+        height: 620,
+        width: 700
       }, 200, 'linear', function () {
         // extra content
         $(this).append('<div class="popup mod box closed" />');
         $(this).find('.popup').hide().fadeIn().prepend('<a class="close" href="#">X</a>');
         $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
   
-        // Trigger first (default tab) or specific tab from hash
-        var hash = window.location.hash.split('~');
-        var index = hash.length > 1 ? hash[1] : 0;
-        $(this).find('.tabs li').eq(index).find('a').data('time', 0).each(openTab);
       });
   
-      }
+//   }
     
   };
   
@@ -150,21 +151,21 @@ jQuery(document).ready(function ($) {
 
       var theKey = 'hoverimages_'  + image_lowercase;
       
-//      console.log('Checking: ' + theKey );
+      // console.log('Checking: ' + theKey );
       
       if(typeof stelselplaat[theKey] === 'undefined') {
           // does not exist
-//          console.log('Does not exist! ' + theKey );
+//          // console.log('Does not exist! ' + theKey );
       }
       else {
           // does exist
-//          console.log('Does actually exist! ' + theKey );
+//          // console.log('Does actually exist! ' + theKey );
           image_hover_location  = stelselplaat[theKey];
     
       }
       
-//      console.log("D'r wordt gehoverd en dit moet 'm zijn: " + image_hover_location );
-//      console.log(image_hover_location);
+      // console.log("D'r wordt gehoverd en dit moet 'm zijn: " + image_hover_location );
+      // console.log(image_hover_location);
       
       $('.relaties img').attr('src', image_hover_location );
     }, 250);
@@ -233,8 +234,8 @@ jQuery(document).ready(function ($) {
     $(this).removeData('time');
     // show tab
     var i = $(this).parent().index();
-    $(this).parents('div').find('.tab').eq(i).siblings('.tab').animate({ marginLeft: '-600px' }, time);
-    $(this).parents('div').find('.tab').eq(i).show().css('margin-left', 600).animate({ marginLeft: 0 }, time);
+    $(this).parents('div').find('.tab').eq(i).siblings('.tab').animate({ marginLeft: '-500px' }, time);
+    $(this).parents('div').find('.tab').eq(i).show().css('margin-left', 500).animate({ marginLeft: 0 }, time);
     // set nav
     $('.tabs .active').removeClass('active');
     $(this).parent().addClass('active');
@@ -244,12 +245,12 @@ jQuery(document).ready(function ($) {
 
     if (activeTab.length) {
       var top = activeTab.prevAll('h2').outerHeight(true) + activeTab.prevAll('ul.tabs').outerHeight(true);
-      var newHeight = Math.max(600, activeTab.outerHeight(true) + top);
+      var newHeight = Math.max(500, activeTab.outerHeight(true) + top);
       activeTab.parents('div.popup').parent('li').css('height', newHeight);
-      // Set a min-height to increase the height of kolom2. This doesn't increase automatically.
-      $('div#kolom2').css('min-height', newHeight == 600 ? 0 : $('ul.stelsel').offset().top + newHeight - $('#page').offset().top);
+      // Set a min-height to increase the height of stelselplaat-container. This doesn't increase automatically.
+      $('div#stelselplaat-container').css('min-height', newHeight == 610 ? 0 : $('ul.stelsel').offset().top + newHeight - $('#page').offset().top);
     } else {
-      $(this).parents('div').find('.tab').parents('div.popup').parent('li').css('height', 600);
+      $(this).parents('div').find('.tab').parents('div.popup').parent('li').css('min-height', 630);
     }
   };
   

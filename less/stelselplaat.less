@@ -6,8 +6,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.6
- * Version desc:  Fallbacks voor pijlenschema. 
+ * Version:       0.1.1
+ * Version desc:  Volgende slag: pijlenschema opgeschoond. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -20,9 +20,6 @@
 @import 'kleuren.less';
 
 
-@break_fullwidth:       1200px;
-@break_tablet:          650px;
-
 
 .stelselplaat_css();
 
@@ -30,27 +27,9 @@
 
 .stelselplaat_css() {
   
-    div#kolom2  {
-      // this div has a specific ratio
-      overflow: hidden;
+    div#stelselplaat-container  {
+
       background: @grijs_1;
-  
-  
-    	position: relative;
-    	padding-bottom: ( 502 / 829 ) * 100%; // 56.25%; //  829:502
-    	padding-top: 25px;
-    	height: 0;
-    	
-    	
-    	#adaptoratio {
-      	// this div adapts to the ratio of its parent
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    	}
-  
   
       abbr {
         border-bottom-style: none;
@@ -65,6 +44,10 @@
         width: inherit;
       }
       
+      .stelsel {
+        display: none;
+        visibility: hidden; 
+      }      
       
       h2,
       h3 {
@@ -76,32 +59,14 @@
       }
       h3 {
         font-size: 1.3em;
-        padding: .5em;
+      }
+  
+
+      .legenda {
+        display: none;
       }
   
       .stelsel {
-        position: relative;
-  //      height: 620px;
-        height: 100%;
-        width: 100%;
-        margin: 0 20px 0 0;
-  //      height: 100%;
-        z-index: 100;
-        
-        & > li {
-          padding: 0;
-          background: none;
-          position: absolute;
-          display: block;
-          text-align: center;
-        }
-  
-        .relaties {
-  //        width: 100%;
-  //        height: 100%;
-  //        display: block;
-          
-        }
         
         li {
           font-size: 12px;
@@ -115,224 +80,63 @@
           }        
         }
   
-        .popup {
-          position: absolute;
-          height: 100%;
-          width: 100%;
-          top: 0;
-          left: 0;
-          background: @wit;
-          text-align: left;
-          overflow: hidden;
-  //        font-size: 12px;
-          border: 2px solid @color_gereed;
-          margin-top: 0;
+
   
-          p {
+
+      .relaties {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      & > li > a {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      // =============================================================================
+      // gereed en niet gereed
+      .gereed {
+      .nietgereed {
+        .mod.box.popup {
+          border-color: @color_gereed;
+          background: @color_gereed_10pc;
+    
+          h2,
+          h3 {
+            background: @color_gereed_20pc;
             color: @txt;
-            margin: 0;
-            padding: 10px;
-          }
-        
-  //        div.statusDoorlevering,
-  //        .statusBasisregistratie,
-  //        .zij li:hover div.statusVerbinding,
-  //        .zij div.statusVerbinding {
-  //          display: none;
-  //        }
-  
+          } 
           .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 3px 8px 2px;
-            font-family: Arial, Helvetica, sans-serif;
-            background: @active;
-            text-align: center;
-            color: @txt;
-            margin: 4px;
-            
-            &:hover,
-            &:active,
-            &:focus {
-              text-decoration: none;
-              color: @txt;
-              background: none;
-            }
-          }
-        }
-  
-      ul.tabs {
-        clear: left;
-        margin: 0 0 -15px 0;
-        padding: 10px 0 24px 50px;
-        
-        &, li {
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-        
-  
-         li {
-          background-image: none;
-          float: left;
-          margin: 0;
-          padding: 0;
-          margin-right: .5em;
-      
-          a {
-            color: @txt;
-            display: block;
-            padding: .2em 1.5em .2em 1em;
+            background: @color_gereed;
             text-decoration: none;
-        
-            &:visited {
-              color: @txt;
-            }
+            color: #fff;
           }
-          
-          &.active a {
-            background: url("../images/bg-tab-active.png") no-repeat scroll 100% 0 transparent;
-            font-weight: bold;
-            margin-right: -8px;
-            text-decoration: none;
-          }
-        }      
-      }
-  
-      
-        
-        .relaties {
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-  
-          img {
-  //          height: 100%;
-  //          width: auto;
-          }
-          
-        }
-  
-        & > li > a {
-          width: 100%;
-          height: 100%;
-          display: block;
-        }
-  
-        // =============================================================================
-        // gereed 
-        .gereed {
-        .nietgereed {
-          .mod.box.popup {
-            border-color: @color_gereed;
-            background: @color_gereed_10pc;
-      
-            h2,
-            h3 {
-              background: @color_gereed_20pc;
-              color: @txt;
-            } 
-            .close {
-              background: @color_gereed;
-              text-decoration: none;
-              color: #fff;
-            }
-  
-            .tabs {
-              background: none repeat scroll 0 0 @color_gereed_20pc;
-              border-bottom: 1px solid @color_gereed;
-            }          
-          }
-        }
-        
-        // =====================================================xw========================
-        // niet gereed 
-        .xxxx_nietgereed {
-          .mod.box.popup {
-            border-color: @color_nietgereed;
-            background: @color_nietgereed_10pc;
-  
-            h2,
-            h3 {
-              background: @color_nietgereed_20pc;
-            }      
-  
-            .close {
-              text-decoration: none;
-              background: @color_nietgereed;
-              color: @txt;
-            }
-            .tabs {
-              background: none repeat scroll 0 0 @color_nietgereed_10pc;
-              border-bottom: 1px solid @color_nietgereed;
-            }          
-          }
-        }
-      } // .stelsel
-  
-  
-      & .ik,
-      .zij a.nietgereed,
-      .mod.box ul li.nietgereed,
-      .br ul li.nietgereed {
-        background: @color_nietgereed;
-        color: @txt;
-      }
-  
-      
-      ul, ol {
-        &, li {
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
+
+          .tabs {
+            background: none repeat scroll 0 0 @color_gereed_20pc;
+            border-bottom: 1px solid @color_gereed;
+          }          
         }
       }
-  
-    
-  
-    
-  
-  
-    
-    
+
+    } // .stelsel
+
+
+    ul, ol {
+      &, li {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+
     div.stelselplaat .stelsel > li > a:hover {
       text-decoration: none;
     }
-    
-    .stelsel .nietgereed > a,
-    .stelsel .nietgereed .ik h3,
-    .zij a.nietgereed {
-      color: @wit;
-    }
-  
-    .stelsel .gereed,
-    .stelsel .gereed .ik,
-    .zij a.gereed,
-    .legenda .gereed span,
-    .mod.box ul li.gereed,
-    .br ul li.gereed {
-      background: @color_gereed;
-      color: @wit;
-    }
-  
-    .stelsel .nietgereed,
-    .stelsel .nietgereed .ik,
-    .zij a.nietgereed,
-    .legenda .nietgereed span,
-    .mod.box ul li.nietgereed,
-    .br ul li.nietgereed {
-      background: @color_nietgereed;
-      color: @wit;
-    }
-    
-    .stelsel .gereed > a,
-    .stelsel .gereed .ik h3,
-    .zij a.gereed {
-      color: #fff;
-    }
+
     
   
     .shield {
@@ -345,163 +149,6 @@
       background: url(../images/white-80.png) repeat scroll 0 0 transparent;
     }
   
-    /* Detailplaten in popup */
-    
-    
-    .ik {
-      background: @bg_ik;
-      margin: 0;
-      display: inline-block;
-      width: 30%;
-      min-height: 275px;
-      color: @txt;
-      margin-bottom: 15px;
-  
-      h3 {
-        background: none;
-        padding: 0;
-      }
-  
-    }
-  
-    .zij {
-      vertical-align: top;
-      display: inline-block;
-      color: @txt;
-      width: 35%;
-      margin: 0;
-      padding: 0;
-      float: left;
-  
-      h3 {
-        text-align: center;
-        margin: 0 0 .7em 0;
-        padding: .7em .5em;
-        font-size: 90%;
-      }
-      
-      li {
-        background: yellow;
-        width: 100%;
-        clear: both;
-        background: none;
-        height: 2em;
-        font-size: 80%;
-        margin-bottom: 5px;
-        position: relative;
-        border-style: none;
-  
-        a {
-          padding: .1em;
-          display: inline-block;
-          width: 40%;
-          height: 100%;
-          position: absolute;
-          right: 1em;
-          top: 0;
-          line-height: 1.8;
-          text-align: right;
-          padding-right: 1em;
-        }
-  
-         &:before, 
-         &:after {
-           width: 1.5em;
-           position: absolute;
-           right: 0;
-           top: 50%;
-           height: 4px;
-           margin-top: -2px;
-           background: @color_gereed;
-         }
-        
-          &.nietgereed {
-            &:before, 
-            &:after {
-               background: @color_nietgereed;
-            }  
-          }  
-        
-        div.statusVerbinding {
-          display: none;
-          visibility: hidden;
-        }
-  
-        &.gereed div.statusVerbinding {
-          background-color: @color_gereed;
-          width: 120px;
-        }
-        &.nietgereed div.statusVerbinding {
-          background-color: @color_nietgereed;
-          width: 140px;
-        }
-        
-        &:hover {
-          div.statusVerbinding {
-            display: block;
-          }
-        }
-      }
-      
-      ul ul {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: @wit;
-        color: @txt;
-        display: none;
-        width: 50%;
-      }    
-    }
-    
-    .ik {
-      float: left;
-      padding: .5em;
-      
-      li {
-        background: @wit;
-        display: block;
-        color: @txt;
-        margin-bottom: 3px;
-        border: 1px solid @grijs;
-        
-        & ul li {
-          margin: .2px;
-        }
-      }    
-    }
-    .wordt-gebruikt-door {
-      li {
-        a {
-          right: auto;
-          left: 1em;
-          text-align: left;
-          padding-left: 1em;
-          padding-right: inherit;
-        }
-         &:before {
-           content: ' ';
-           display: block;
-           left: 0;
-           right: auto;
-         }
-      }
-    }
-    .maakt-gebruik-van {
-      li {
-        a {
-          right: 1em;
-          text-align: left;
-          padding-left: 1em;
-          padding-right: inherit;
-        }
-         &:after {
-           content: ' ';
-           display: block;
-           right: 0;
-         }
-      }
-    }
     
     
     .geometrie {
@@ -531,110 +178,8 @@
       padding: 3px;
       margin: 0;
     }
-    .zij > ul > li.gereed {
-      border-bottom: 2px solid @color_gereed;
-    }
-    .zij > ul > li.nietgereed {
-      border-bottom: 2px solid @color_nietgereed;
-    }
-    
-    
-    .leverancier {
-      text-align: center;
-      clear: both;
-  
-      ul {
-        overflow: hidden;
-      }
-  
-      li {
-        padding: 5px 10px;
-        display: inline-block;
-        width: 90px;
-        vertical-align: top;
-        position: relative;
-        em {
-          position: absolute;
-          background: @bg_ik;
-          color: #333;
-          margin-top: 5px;
-          display: none;
-          left: 0;
-          padding: 2px 5px;
-          border: 1px solid #AAA;
-          width: 98px;
-          font-style: normal;
-        }
-        
-        &:hover em {
-          display: block;
-          z-index: 99;
-        }
-      }
-      .statusDoorlevering {
-        .visuallyhidden();      
-        + p {
-          .visuallyhidden();      
-        }
-      }
-    }
     
   
-    /* Legenda */
-    .legenda {
-      vertical-align: top;
-      background: @wit;
-      padding: 1em;
-      margin-right: 20px;
-    
-      &, li {
-        list-style-type: none;
-        float: right;
-      }
-      li + li { 
-        margin-top: 0.5em;
-      }
-      li {
-        background: none;
-        position: relative;
-        float: none;
-        overflow: hidden;
-        height: 2rem;
-        line-height: 1.6;
-  
-        &.gereed,
-        &.nietgereed {
-          &:before {
-            border: 1px solid @txt;
-            background: @color_gereed;
-            content: ' ';
-            width: 1.2rem;
-            height: 1.2rem;
-            display: block;
-            float: left;
-            margin: .1em .2em 0 0;
-          }
-        }
-        &.nietgereed {
-          &:before {
-            background: @color_nietgereed;
-          }
-        }
-        &.legenda_geo {
-          padding-left: 1.4rem;
-          background: url('../images/geo.svg') no-repeat left center;
-          background-size: 1.2rem 1.2rem;
-        }
-        
-      }
-      span {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 20px;
-        height: 20px;
-      }
-    }
   
   
     /* Fix issue with nested li items. em is applied each time. */
@@ -734,7 +279,236 @@
           margin-left: -132px;
         }
       }
-    } // div#kolom2 
+    } // .stelsel 
+
+
+
+    .ik,
+    .zij {
+      ul {
+        &, li {
+          padding-left: 0;
+          margin-left: 0;
+        }
+      }
+    }
+
+    
+    .leverancier {
+      clear: both;
+      color: @txt;
+  
+      ul {
+        overflow: hidden;
+  
+        li {
+          padding: 5px 10px;
+          margin: 0 5px 5px 0;
+          display: inline-block;
+          min-width: 90px;
+          vertical-align: top;
+          position: relative;
+          background: @color_gereed;
+          color: @wit;
+  
+          em {
+            position: absolute;
+            background: @bg_ik;
+            color: #333;
+            margin-top: 5px;
+            display: none;
+            left: 0;
+            padding: 2px 5px;
+            border: 1px solid #AAA;
+            width: 98px;
+            font-style: normal;
+          }
+          
+          &:hover em {
+            display: block;
+            z-index: 99;
+          }
+        }
+      }
+      
+      .statusDoorlevering {
+        .visuallyhidden();      
+        + p {
+          .visuallyhidden();      
+        }
+      }
+    }    
+
+
+    @media only screen and (min-width: ( @break_tablet ) ) {
+  
+      /* Detailplaten in popup */
+      .ik {
+        border: 2px solid @color_gereed;
+        background: @bg_ik;
+        margin: 0;
+        display: inline-block;
+        width: 30%;
+        min-height: 275px;
+        color: @txt;
+        margin-bottom: 15px;
+        float: left;
+        padding: .5em;
+    
+        h3 {
+          background: none;
+          padding: 0;
+        }
+    
+        li {
+          background: @wit;
+          display: block;
+          color: @txt;
+          margin-bottom: 3px;
+          border: 1px solid @grijs;
+          
+          & ul li {
+            margin: .2px;
+          }
+        }    
+      }
+  
+
+      .zij {
+        vertical-align: top;
+        display: inline-block;
+        color: @txt;
+        width: 35%;
+        margin: 0;
+        padding: 0;
+        float: left;
+        
+        li {
+          width: 100%;
+          clear: both;
+          background: none;
+          height: 2em;
+  //        border-style: none;
+          font-size: 80%;
+          margin-bottom: 5px;
+          position: relative;
+    
+          a {
+            padding: .1em;
+            display: inline-block;
+            width: 40%;
+            height: 100%;
+            position: absolute;
+            right: 1em;
+            top: 0;
+            line-height: 1.8;
+            text-align: right;
+            padding-right: 1em;
+            background: @color_gereed;
+            color: @wit;
+          }
+    
+           &:before, 
+           &:after {
+             width: 1.5em;
+             position: absolute;
+             right: 0;
+             top: 50%;
+             height: 4px;
+             margin-top: -2px;
+             background: @color_gereed;
+           }
+          
+            &.nietgereed {
+              &:before, 
+              &:after {
+                 background: @color_nietgereed;
+              }  
+            }  
+          
+          div.statusVerbinding {
+            display: none;
+            visibility: hidden;
+          }
+    
+          &.gereed div.statusVerbinding {
+            background-color: @color_gereed;
+            width: 120px;
+          }
+          &.nietgereed div.statusVerbinding {
+            background-color: @color_nietgereed;
+            width: 140px;
+          }
+          
+          &:hover {
+            div.statusVerbinding {
+              display: block;
+            }
+          }
+        }
+        
+        ul ul {
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: @wit;
+          color: @txt;
+          display: none;
+          width: 50%;
+        }    
+      }
+      
+      .wordt-gebruikt-door {
+        li {
+          a {
+            right: auto;
+            left: 1em;
+            text-align: left;
+            padding-left: 1em;
+            padding-right: inherit;
+          }
+           &:before {
+             content: ' ';
+             display: block;
+             left: 0;
+             right: auto;
+           }
+        }
+      }
+      .maakt-gebruik-van {
+        li {
+          a {
+            right: 1em;
+            text-align: right;
+            padding-right: 1em;
+            padding-left: inherit;
+          }
+           &:after {
+             content: ' ';
+             display: block;
+             right: 0;
+           }
+        }
+      }
+
+      .leverancier {
+        text-align: center;
+      }    
+      
+      .ik,
+      .zij,
+      .leverancier {
+  
+        h3 {
+          text-align: center;
+          margin: 0 0 .7em 0;
+          padding: .7em .5em;
+          font-size: 90%;
+        }
+      }
+      // end @media only screen and (min-width: ( @break_tablet ) ) {
+    }
+  
   
     .stelsel {
       
@@ -749,101 +523,11 @@
       padding: 1em;
       margin: 1em;
     }
-  
-    #BRV_li, 
-    #BRI_li, 
-    #BLAU_li, 
-    #BRK_li, 
-    #BRT_li, 
-    #BGT_li, 
-    #BRO_li, 
-    #WOZ_li, 
-    #BAG_li, 
-    #NHR_li, 
-    #BRP_li, 
-    #BRP-ni_li, 
-    #BRP-i_li {
-      background: @color_gereed;
-      height: 22%;
-      top: 90%;
-      width: 14.5%;
-      line-height: 1.4;
-      padding: 1em;
-      
-      &, a {
-        color: @wit;
-      }
-    }
-    
-    #BRV_li,
-    #BRI_li,
-    #BLAU_li,
-    #BRK_li,
-    #BRT_li {
-      top: 4%;
-    }
-  
-    #BRV_li {
-      left: 2%;
-    }
-    #BRI_li {
-      left: 18%;
-    }
-    #BLAU_li {
-      left: 34%;
-    }
-    #BRK_li {
-      left: 50%;
-      width: 25%;
-    }
-    #BRT_li {
-      right: 2%;
-    }
-    #BGT_li {
-      top: 35%;
-      right: 2%;
-      height: 12%;
-    }
-    #BRO_li {
-      top: 55%;
-      right: 2%;
-      height: 12%;
-    }
-    #WOZ_li {
-      top: 35%;
-      left: 57%;
-    }
-    #BAG_li {
-      top: 70%;
-      right: 2%;
-      width: 25%;
-    }
-    #NHR_li {
-      top: 70%;
-      left: 37%;
-    }
-    #BRP_li {
-      width: 25%;
-      left: 2%;
-      top: 70%;
-    }
-    #BRP-ni_li,
-    #BRP-i_li {
-      width: 11%;
-      height: 10%;
-    }
-    #BRP-ni_li {
-      top: 78%;
-      left: 3%;
-    }
-    #BRP-i_li {
-      top: 78%;
-      left: 16%;
-    }
+
   }
 
   @media only screen and (min-width: ( @break_fullwidth ) ) {
-    div#kolom2  {
+    div#stelselplaat-container  {
       #BRV_li, 
       #BRI_li, 
       #BLAU_li, 

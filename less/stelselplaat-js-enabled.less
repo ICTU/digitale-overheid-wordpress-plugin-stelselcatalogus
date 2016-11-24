@@ -4,14 +4,264 @@
  * ICTU / WP Stelselplaat plugin
  * ----------------------------------------------------------------------------------
  * Description:   CSS-file used if JS is enabled.
- * Version:       0.0.6
- * Version desc:  Fallbacks voor pijlenschema. 
+ * Version:       0.1.1
+ * Version desc:  Volgende slag: pijlenschema opgeschoond. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
  * @link          http://wbvb.nl/themes/wp-rijkshuisstijl/
  * ----------------------------------------------------------------------------------
  */
+
+@import 'kleuren.less';
+
+
+div#stelselplaat-container  {
+  // this div has a specific ratio
+  overflow: hidden;
+	position: relative;
+	padding-bottom: ( 502 / 829 ) * 100%; // 56.25%; //  829:502
+	padding-top: 25px;
+	height: 0;
+	
+  h3 {
+    padding: .5em;
+  }
+	
+	
+	#adaptoratio {
+  	// this div adapts to the ratio of its parent
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	}
+
+  .stelsel {
+    display: block;
+    visibility: visible;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0 20px 0 0;
+    z-index: 100;
+
+        
+    & > li {
+      padding: 0;
+      background: none;
+      position: absolute;
+      display: block;
+      text-align: center;
+    }
+
+    .popup {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: @wit;
+      text-align: left;
+      overflow: hidden;
+      border: 2px solid @color_gereed;
+      margin-top: 0;
+
+      p, h2 {
+        color: @txt;
+        margin: 0;
+        padding: 10px;
+      }
+
+      h2 {
+        background: @color_nietgereed;
+        color: @wit;
+      }      
+
+      h3 {
+        color: @txt;
+      }      
+
+      .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 3px 8px 2px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: @active;
+        border: 1px solid @active;
+        text-align: center;
+        color: @txt;
+        margin: 4px;
+        
+        &:hover,
+        &:active,
+        &:focus {
+          text-decoration: none;
+          color: @txt !important;
+          border-color: @txt !important;
+          background: none;
+        }
+      }
+    }    
+  }
+
+  /* Legenda */
+  .legenda {
+    vertical-align: top;
+    background: @wit;
+    padding: 1em;
+    margin-right: 20px;
+    display: block;
+  
+    &, li {
+      list-style-type: none;
+      float: right;
+    }
+    li + li { 
+      margin-top: 0.5em;
+    }
+    li {
+      background: none;
+      position: relative;
+      float: none;
+      overflow: hidden;
+      height: 2rem;
+      line-height: 1.6;
+
+      &.gereed,
+      &.nietgereed {
+        &:before {
+          border: 1px solid @txt;
+          background: @color_gereed;
+          content: ' ';
+          width: 1.2rem;
+          height: 1.2rem;
+          display: block;
+          float: left;
+          margin: .1em .2em 0 0;
+        }
+      }
+      &.nietgereed {
+        &:before {
+          background: @color_nietgereed;
+        }
+      }
+      &.legenda_geo {
+        padding-left: 1.4rem;
+        background: url('../images/geo.svg') no-repeat left center;
+        background-size: 1.2rem 1.2rem;
+      }
+      
+    }
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  #BRV_li, 
+  #BRI_li, 
+  #BLAU_li, 
+  #BRK_li, 
+  #BRT_li, 
+  #BGT_li, 
+  #BRO_li, 
+  #WOZ_li, 
+  #BAG_li, 
+  #NHR_li, 
+  #BRP_li, 
+  #BRP-ni_li, 
+  #BRP-i_li {
+    background: @color_gereed;
+    height: 21%;
+    top: 90%;
+    width: 14.5%;
+    line-height: 1.4;
+    padding: 1em;
+    
+    &, a {
+      color: @wit;
+    }
+    .popup {
+      color: @txt;
+      min-height: 700px !important;
+      overflow: hidden;
+    }
+  }
+  
+  #BRV_li,
+  #BRI_li,
+  #BLAU_li,
+  #BRK_li,
+  #BRT_li {
+    top: 8%;
+  }
+
+  #BRV_li {
+    left: 2%;
+  }
+  #BRI_li {
+    left: 18%;
+  }
+  #BLAU_li {
+    left: 34%;
+  }
+  #BRK_li {
+    left: 50%;
+    width: 25%;
+  }
+  #BRT_li {
+    right: 2%;
+  }
+  #BGT_li {
+    top: 35%;
+    right: 2%;
+    height: 12%;
+  }
+  #BRO_li {
+    top: 52%;
+    right: 2%;
+    height: 12%;
+  }
+  #WOZ_li {
+    top: 35%;
+    left: 57%;
+  }
+  #BAG_li {
+    top: 70%;
+    right: 2%;
+    width: 25%;
+  }
+  #NHR_li {
+    top: 70%;
+    left: 38%;
+  }
+  #BRP_li {
+    width: 25%;
+    left: 2%;
+    top: 70%;
+  }
+  #BRP-ni_li,
+  #BRP-i_li {
+    width: 11%;
+    height: 10%;
+  }
+  #BRP-ni_li {
+    top: 78%;
+    left: 3%;
+  }
+  #BRP-i_li {
+    top: 78%;
+    left: 15%;
+  }
+  
+}
+    
 
 .tab {
   display: none;
@@ -26,9 +276,9 @@
   overflow: hidden;
 }
 
-.tab[style*="-600px"] {
-  border: 10px solid red;
-  visibility: hidden;
+li[style*="700px"] {
+  overflow: visible !important;
+  min-height: auto !important;
 }
 
 h2 {

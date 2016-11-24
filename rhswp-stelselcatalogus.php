@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.0.6
- * Version desc:  Fallbacks voor pijlenschema. 
+ * Version:       0.1.1
+ * Version desc:  Volgende slag: pijlenschema opgeschoond. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -929,4 +929,3 @@ add_action( 'plugins_loaded', array( 'Stelselplaat', 'get_instance' ) );
 
 endif;
 
-//add_action( 'plugins_loaded', array( 'Stelselplaat', 'init' ), 10 );

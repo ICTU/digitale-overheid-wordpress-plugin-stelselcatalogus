@@ -18,3 +18,9 @@ wp-content/plugins/hello.php
 
 **build/
 
+
+*.map
+
+css/stelselplaat-js-enabled.css.map
+
+css/stelselplaat.css.map

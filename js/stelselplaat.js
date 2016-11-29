@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.1.1
- * Version desc:  Volgende slag: pijlenschema opgeschoond. 
+ * Version:       1.0.1
+ * Version desc:  Oplevering. Dossierlink toegevoegd. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+

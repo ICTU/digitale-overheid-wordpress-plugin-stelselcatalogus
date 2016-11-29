@@ -2590,7 +2590,7 @@
 		"oA": 0,
 		"oAP": "\/images\/legenda-invoervelden.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
 		},
 	"\/images\/legenda.png": {
 		"ft": 32768,

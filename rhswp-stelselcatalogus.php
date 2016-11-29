@@ -5,7 +5,7 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.1.1
+ * Version:       1.0.1
  * Version desc:  Volgende slag: pijlenschema opgeschoond. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
@@ -502,86 +502,7 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '#BRV_li {
-	top: 15px;
-	left: 20px;
-	width: 110px;
-}
-#BRI_li {
-	top: 15px;
-	left: 150px;
-	width: 110px;
-}
-#BLAU_li {
-	top: 15px;
-	left: 280px;
-	width: 110px;
-}
-#BRK_li {
-	top: 15px;
-	left: 440px;
-	width: 225px; /* 17%; */
-}
-#BRT_li {
-	top: 15px;
-	left: 725px;
-}
-#BGT_li {
-	top: 160px;
-	left: 725px;
-	height: 75px;
-}
-#BRO_li {
-	top: 255px;
-	left: 725px;
-	height: 75px;
-}
-#WOZ_li {
-	top: 175px;
-	left: 505px;
-	width: 125px;
-}
-#BAG_li {
-	top: 355px;
-	left: 625px;
-	width: 245px;
-}
-#NHR_li {
-	top: 355px;
-	left: 345px;
-	width: 120px;
-}
-#BRP_li {
-	top: 355px;
-	left: 20px;
-	width: 245px;
-}
-#BRP-ni_li {
-	top: 395px;
-	left: 30px;
-	width: 110px;
-	border: 1px solid #fff;
-	height: 60px;
-}
-#BRP-i_li {
-	top: 395px;
-	left: 145px;
-	width: 110px;
-	border: 1px solid #fff;
-	height: 60px;
-}
-#NHR_li .object {
-	top: -105px;
-}
-#BRP-ni_li .object {
-	top: -7px;
-}
-#BRP-i_li .object {
-	top: -7px;
-}
-.mod.box .zij > ul > li {
-	width: 63px;
-}',
+			'default_value' => '',
 			'placeholder' => '',
 			'maxlength' => '',
 			'rows' => '',
@@ -705,7 +626,7 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 					'name' => 'stelselplaat_bouwsteen_ik',
 					'type' => 'wysiwyg',
 					'instructions' => '',
-					'required' => 1,
+					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array (
 						'width' => '',
@@ -717,9 +638,34 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 					'toolbar' => 'full',
 					'media_upload' => 0,
 				),
+
+    		array (
+    			'key' => 'field_583dac65d0f81',
+    			'label' => 'Link naar dossier (7)',
+    			'name' => 'stelselplaat_link_naar_dossier',
+    			'type' => 'taxonomy',
+    			'instructions' => '',
+    			'required' => 0,
+    			'conditional_logic' => 0,
+    			'wrapper' => array (
+    				'width' => '',
+    				'class' => '',
+    				'id' => '',
+    			),
+    			'taxonomy' => 'dossiers',
+    			'field_type' => 'radio',
+    			'allow_null' => 1,
+    			'add_term' => 0,
+    			'save_terms' => 0,
+    			'load_terms' => 0,
+    			'return_format' => 'object',
+    			'multiple' => 0,
+    		),
+
+				
 				array (
 					'key' => 'field_582ecc41d3345',
-					'label' => 'Wordt gebruikt door (7)',
+					'label' => 'Wordt gebruikt door (8)',
 					'name' => 'stelselplaat_bouwsteen_zij_wordt_gebruikt_door',
 					'type' => 'wysiwyg',
 					'instructions' => '',
@@ -737,7 +683,7 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 				),
 				array (
 					'key' => 'field_582ecf40ee1df',
-					'label' => 'Levert gegevens door (8)',
+					'label' => 'Levert gegevens door (9)',
 					'name' => 'stelselplaat_bouwsteen_leverancier',
 					'type' => 'wysiwyg',
 					'instructions' => '',
@@ -796,6 +742,7 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 					'rows' => '',
 					'new_lines' => '',
 				),
+/*				
 				array (
 					'key' => 'field_582ede1165ca1',
 					'label' => 'Pijlenschema voor hover',
@@ -820,6 +767,7 @@ de list items voor de elementen in de kaart (ul.stelsel) </p>
 					'max_size' => '',
 					'mime_types' => '',
 				),
+*/				
 			),
 		),
 	),

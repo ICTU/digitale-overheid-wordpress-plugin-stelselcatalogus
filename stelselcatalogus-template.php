@@ -7,8 +7,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       0.1.1
- * Version desc:  Volgende slag: pijlenschema opgeschoond. 
+ * Version:       1.0.1
+ * Version desc:  Oplevering. Dossierlink toegevoegd. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -212,6 +212,14 @@ function rhswp_write_stelselplaat() {
   		$stelselplaat_bouwsteen_zij_rechts      = get_sub_field('stelselplaat_bouwsteen_zij_wordt_gebruikt_door');
   		$stelselplaat_bouwsteen_leverancier     = get_sub_field('stelselplaat_bouwsteen_leverancier');
   		$stelselplaat_bouwsteen_gepubliceerd    = get_sub_field('stelselplaat_bouwsteen_gepubliceerd');
+  		if ( get_sub_field('stelselplaat_link_naar_dossier') ) {
+    		$stelselplaat_link_naar_dossier        = get_sub_field('stelselplaat_link_naar_dossier');
+    		$stelselplaat_link_naar_dossier        = '<p class="dossier-link"><a href="' . get_term_link( $stelselplaat_link_naar_dossier ) . '">' . __( 'Bekijk het dossier', 'rhswp-stelselcatalogus' ) . '</a></p>';
+  		}
+  		else {
+    		$stelselplaat_link_naar_dossier = '';
+  		}
+    
     
       if ( 'gepubliceerd' == $stelselplaat_bouwsteen_gepubliceerd && $stelselplaat_bouwsteen_id ) {
 
@@ -223,7 +231,7 @@ function rhswp_write_stelselplaat() {
 
         echo '<div id="' . $stelselplaat_bouwsteen_id . '" class="br ' . $stelselplaat_bouwsteen_id . ' hide_js">
             <h2>' . $stelselplaat_bouwsteen_heading . '</h2>
-            <div class="statusBasisregistratie">' . $stelselplaat_bouwsteen_inhoud . '</div>
+            <div class="statusBasisregistratie">' . $stelselplaat_link_naar_dossier . $stelselplaat_bouwsteen_inhoud . '</div>
             <div class="zij maakt-gebruik-van">
               <h3>' . $stelselplaat_bouwsteen_titel_abbr . ' ' . __( 'maakt gebruik van', 'rhswp-stelselcatalogus' ) . '</h3>
               ' . $stelselplaat_bouwsteen_zij_links . '

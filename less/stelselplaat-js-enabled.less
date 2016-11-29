@@ -4,8 +4,8 @@
  * ICTU / WP Stelselplaat plugin
  * ----------------------------------------------------------------------------------
  * Description:   CSS-file used if JS is enabled.
- * Version:       0.1.1
- * Version desc:  Volgende slag: pijlenschema opgeschoond. 
+ * Version:       1.0.1
+ * Version desc:  Oplevering. Dossierlink toegevoegd. 
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -68,10 +68,50 @@ div#stelselplaat-container  {
       border: 2px solid @color_gereed;
       margin-top: 0;
 
-      p, h2 {
+      p, a, h2 {
         color: @txt;
+      }
+      p,
+      h2 {
         margin: 0;
         padding: 10px;
+      }
+      .statusBasisregistratie {
+        overflow: hidden;
+        clear: both;
+        display: block;
+        margin: .5em 0 1em 0;
+      }
+      .dossier-link {
+        display: inline-block;
+        float: right;
+        padding: 5px 10px 5px 5px;
+        a {
+          display: block;
+          padding: 5px .5em;
+          background: @color_nietgereed;
+          color: @wit;
+          position: relative;
+          padding-right: 1.5em;
+          
+          &:after {
+            font-weight: normal;
+            font-family: "RO Icons";
+            display: inline-block;
+            vertical-align: middle;
+            content: "";
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: @wit;
+            font-size: 80%;
+            line-height: 1em;
+            position: absolute;
+            right: 0;
+            top: 8px;
+            width: 1.5em;
+          }            
+        }
       }
 
       h2 {

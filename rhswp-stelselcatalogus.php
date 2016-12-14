@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.3
- * Version desc:  Bug: check op template ingebouwd
+ * Version:       1.0.4
+ * Version desc:  Bug: check op template ingebouwd, op hoger niveau
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -98,13 +98,17 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
   	 */
   	public function rhswp_stelselplaat_use_page_template() {
 
+      global $post;
+
   		$page_template = get_post_meta( get_the_ID(), '_wp_page_template', true );
 
       define( 'DO_STELSELPLAAT_FOLDER',     'rhswp-stelselcatalogus' );
       define( 'DO_STELSELPLAAT_BASE_URL',   trailingslashit( plugins_url( DO_STELSELPLAAT_FOLDER ) ) );
       define( 'DO_STELSELPLAAT_PATH',       plugin_dir_path( __FILE__ ) );
-       
-      if ( is_page( ) ) {
+
+    	$page_template  = get_post_meta( get_the_ID(), '_wp_page_template', true );
+    
+    	if ( $this->templatefile == $page_template ) {
         
         //* Force full-width-content layout
         add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -244,26 +248,20 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
     
     function rhswp_stelselplaat_pre_post_content() {
 
-      global $post;
 
-    	$page_template  = get_post_meta( get_the_ID(), '_wp_page_template', true );
-    
-    	if ( $this->templatefile == $page_template ) {
+        echo '<div id="page" class="stelselplaat">';
+      
+        $stelselplaat_introductie   = get_field('stelselplaat_introductie', 'option');
+        echo $stelselplaat_introductie;
+      
+        echo '<div id="stelselplaat-container">';
+        echo '<div id="adaptoratio">';
+      
+        $this->rhswp_stelselplaat_write_stelselplaat();
+      
+        echo '</div>'; // id="adaptoratio";
+        echo '</div>'; // id="stelselplaat-container";
 
-          echo '<div id="page" class="stelselplaat">';
-        
-          $stelselplaat_introductie   = get_field('stelselplaat_introductie', 'option');
-          echo $stelselplaat_introductie;
-        
-          echo '<div id="stelselplaat-container">';
-          echo '<div id="adaptoratio">';
-        
-          $this->rhswp_stelselplaat_write_stelselplaat();
-        
-          echo '</div>'; // id="adaptoratio";
-          echo '</div>'; // id="stelselplaat-container";
-
-      }
     }
     
     //========================================================================================================

@@ -23,5 +23,9 @@ find . -name ‘*.DS_Store’ -type f -delete
 # copy from temp dir to dev-env
 rsync -r -a --delete '/shared-paul-files/Webs/temp/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/rhswp-stelselcatalogus/' 
 
+rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/rhswp-stelselcatalogus/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/plugins/rhswp-stelselcatalogus/'
+
+
+
 # remove temp dir
 rm -rf '/shared-paul-files/Webs/temp/'

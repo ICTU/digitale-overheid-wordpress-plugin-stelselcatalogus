@@ -8,7 +8,7 @@
 rsync -r -a --delete '/shared-paul-files/Webs/git-repos/ICTU---Digitale-Overheid-Plugin-Stelselcatalogus/' '/shared-paul-files/Webs/temp/'
 
 # clean up temp dir
-rm -rfv '/shared-paul-files/Webs/temp/.git/'
+rm -rf '/shared-paul-files/Webs/temp/.git/'
 rm '/shared-paul-files/Webs/temp/.gitignore'
 rm '/shared-paul-files/Webs/temp/distribute.sh'
 rm '/shared-paul-files/Webs/temp/README.md'

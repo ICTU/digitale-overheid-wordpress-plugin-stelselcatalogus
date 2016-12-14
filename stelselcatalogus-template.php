@@ -1,5 +1,8 @@
-<?php
-
+<?php 
+/*
+Template Name: Stelselplaat
+Template Post Type: post, page, event
+*/
 
 /**
  * ICTU / WP Stelselplaat plugin - stelselcatalogus-template.php

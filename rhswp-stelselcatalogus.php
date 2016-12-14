@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.2
- * Version desc:  Code en bestanden opgeschoond; up-to-date voor WP4.7
+ * Version:       1.0.3
+ * Version desc:  Bug: check op template ingebouwd
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -243,21 +243,27 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
      */
     
     function rhswp_stelselplaat_pre_post_content() {
+
+      global $post;
+
+    	$page_template  = get_post_meta( get_the_ID(), '_wp_page_template', true );
     
-      echo '<div id="page" class="stelselplaat">';
-    
-      $stelselplaat_introductie   = get_field('stelselplaat_introductie', 'option');
-      echo $stelselplaat_introductie;
-    
-      echo '<div id="stelselplaat-container">';
-      echo '<div id="adaptoratio">';
-    
-      $this->rhswp_stelselplaat_write_stelselplaat();
-    
-      echo '</div>'; // id="adaptoratio";
-      echo '</div>'; // id="stelselplaat-container";
-    //  echo '</div>'; // id="page";
-    
+    	if ( $this->templatefile == $page_template ) {
+
+          echo '<div id="page" class="stelselplaat">';
+        
+          $stelselplaat_introductie   = get_field('stelselplaat_introductie', 'option');
+          echo $stelselplaat_introductie;
+        
+          echo '<div id="stelselplaat-container">';
+          echo '<div id="adaptoratio">';
+        
+          $this->rhswp_stelselplaat_write_stelselplaat();
+        
+          echo '</div>'; // id="adaptoratio";
+          echo '</div>'; // id="stelselplaat-container";
+
+      }
     }
     
     //========================================================================================================

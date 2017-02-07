@@ -5,8 +5,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.4
- * Version desc:  Bug: check op template ingebouwd, op hoger niveau
+ * Version:       1.0.5
+ * Version desc:  Focus binnen popup houden. Toegankelijkheidsissues.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -165,6 +165,7 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
     
       // enqueue minified JS
       wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
+//      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
     
     }
     
@@ -261,6 +262,7 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
       
         echo '</div>'; // id="adaptoratio";
         echo '</div>'; // id="stelselplaat-container";
+        echo '</div>'; // id="page";
 
     }
     

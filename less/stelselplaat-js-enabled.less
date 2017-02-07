@@ -133,14 +133,40 @@ div#stelselplaat-container  {
         border: 1px solid @active;
         text-align: center;
         color: @txt;
-        margin: 4px;
+        margin: 10px;
+//        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 1.5em;
+        height: 1.5em;
+        text-align: center;
+
+        &:before {
+          content: 'X';
+          color: white;
+          display: block;
+          border: 1px solid white;
+          background: @active;
+          border: 1px solid @active;
+          speak: none;
+        }
+
+        span {
+          display: block;
+          text-indent: 999em;
+          height: 1px;
+          width: 1px;
+          color: white;
+
+        }
+
         
         &:hover,
         &:active,
         &:focus {
           text-decoration: none;
           color: @txt !important;
-          border-color: @txt !important;
+          border-color: @wit !important;
           background: none;
         }
       }

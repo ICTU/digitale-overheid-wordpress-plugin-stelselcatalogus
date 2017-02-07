@@ -5,8 +5,8 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.1
- * Version desc:  Oplevering. Dossierlink toegevoegd. 
+ * Version:       1.0.5
+ * Version desc:  Focus binnen popup houden. Toegankelijkheidsissues.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -15,7 +15,17 @@
 
 jQuery(document).ready(function ($) {
 
-  var doPopupWindows = false;  
+  var doPopupWindows = false,
+      modalOpen = false,
+      allNodes = document.querySelectorAll('*'),
+      modal,
+      i,
+      lastFocus,
+      $relaties,
+      $rel,
+      $selector;
+
+
   
   // =========================================================================================================
   
@@ -57,7 +67,20 @@ jQuery(document).ready(function ($) {
   
   // =========================================================================================================
   
+  // Restrict focus to the modal window when it's open.
+  // Tabbing will just loop through the whole modal.
+  // Shift + Tab will allow backup to the top of the modal,
+  // and then stop.
+  function focusRestrict ( event ) {
 
+    var myModal = document.getElementById('thepopupwindow');
+
+    if ( modalOpen && !myModal.contains( event.target ) ) {
+      event.stopPropagation();
+      myModal.focus();
+    }
+
+  }
   
   // =========================================================================================================
   /**
@@ -65,8 +88,7 @@ jQuery(document).ready(function ($) {
    */
   function openPopup() {
 
-//    if ( doPopupWindows ) {
-        
+
       // close filters
       $('.begrippen-filter h2').siblings().slideUp();
   
@@ -108,14 +130,25 @@ jQuery(document).ready(function ($) {
       }, 200, 'linear', function () {
         // extra content
         $(this).append('<div class="popup mod box closed" />');
-        $(this).find('.popup').hide().fadeIn().prepend('<a class="close" href="#">X</a>');
+        $(this).find('.popup').hide().fadeIn().prepend('<button class="close" id="modal_close" type="button" aria-label="close">Sluit</button>');
         $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
-  
+
+        modal = $(this).find('.popup');
+        modalOpen = true;
+        modal.attr('tabindex', '0');
+        modal.attr('aria-expanded', 'true');
+        modal.attr('id','thepopupwindow');
+        modal.focus();        
+
       });
-  
-//   }
+
+    // restrict tab focus on elements only inside modal window
+    for (i = 0; i < allNodes.length; i++) {
+      allNodes.item(i).addEventListener('focus', focusRestrict);
+    }  
+
     
-  };
+  }
   
   // =========================================================================================================
   
@@ -151,22 +184,14 @@ jQuery(document).ready(function ($) {
 
       var theKey = 'hoverimages_'  + image_lowercase;
       
-      // console.log('Checking: ' + theKey );
-      
       if(typeof stelselplaat[theKey] === 'undefined') {
-          // does not exist
-//          // console.log('Does not exist! ' + theKey );
+        // does not exist
       }
       else {
-          // does exist
-//          // console.log('Does actually exist! ' + theKey );
-          image_hover_location  = stelselplaat[theKey];
-    
+        // does exist
+        image_hover_location  = stelselplaat[theKey];
       }
-      
-      // console.log("D'r wordt gehoverd en dit moet 'm zijn: " + image_hover_location );
-      // console.log(image_hover_location);
-      
+
       $('.relaties img').attr('src', image_hover_location );
     }, 250);
   });
@@ -195,6 +220,14 @@ jQuery(document).ready(function ($) {
   
   /* close button */
   $('.close').live('click', function () {
+
+    // restrict tab focus on elements only inside modal window
+    for (i = 0; i < allNodes.length; i++) {
+      allNodes.item(i).removeEventListener('focus', focusRestrict);
+    }  
+    
+    modal.attr('aria-expanded', 'false');
+    
     $(this).parents('li').each(function () {
       $(this).css('z-index', 'auto').animate({
         top: $.data(this, 'top'),
@@ -206,6 +239,10 @@ jQuery(document).ready(function ($) {
         $(this).remove();
       });
     });
+
+    modalOpen = false;
+    lastFocus.focus();
+    
   });
   
   // =========================================================================================================
@@ -230,7 +267,7 @@ jQuery(document).ready(function ($) {
    */
   function openTab() {
     var time = 0;
-    if ($(this).data('time') == undefined) time = 250;
+    if ($(this).data('time') === undefined) { time = 250; }
     $(this).removeData('time');
     // show tab
     var i = $(this).parent().index();
@@ -248,11 +285,11 @@ jQuery(document).ready(function ($) {
       var newHeight = Math.max(500, activeTab.outerHeight(true) + top);
       activeTab.parents('div.popup').parent('li').css('height', newHeight);
       // Set a min-height to increase the height of stelselplaat-container. This doesn't increase automatically.
-      $('div#stelselplaat-container').css('min-height', newHeight == 610 ? 0 : $('ul.stelsel').offset().top + newHeight - $('#page').offset().top);
+      $('div#stelselplaat-container').css('min-height', newHeight === 610 ? 0 : $('ul.stelsel').offset().top + newHeight - $('#page').offset().top);
     } else {
       $(this).parents('div').find('.tab').parents('div.popup').parent('li').css('min-height', 630);
     }
-  };
+  }
   
   // =========================================================================================================
   
@@ -268,8 +305,8 @@ jQuery(document).ready(function ($) {
       // If popup is open, check if we should open another popup, or just change the tab
       else {
         var hashParts = window.location.hash.split('~'),
-            popupParts = $('.popup').prev().attr('href').split('~')
-        if (hashParts[0] == popupParts[0]) {
+            popupParts = $('.popup').prev().attr('href').split('~');
+        if (hashParts[0] === popupParts[0]) {
           // Trigger first (default tab) or specific tab from hash
           hashParts[1] = hashParts[1] ? hashParts[1] : '0';
           $('.popup .tabs > li > a[href$="' + hashParts.join('~') + '"]').each(openTab);
@@ -277,10 +314,14 @@ jQuery(document).ready(function ($) {
           popupElement.each(openPopup);
         }
       }
-    } else {
+    }
+    else {
       // If there is no hash, close the popup (if open)
       $('.close').click();
     }
+
+  
+    
   }
 
   $(window).on('hashchange', hashChange);

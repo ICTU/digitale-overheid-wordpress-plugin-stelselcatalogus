@@ -15,9 +15,9 @@
 
 jQuery(document).ready(function ($) {
 
-  var doPopupWindows = false,
-      modalOpen = false,
-      allNodes = document.querySelectorAll('*'),
+  var doPopupWindows  = false,
+      modalOpen       = false,
+      allNodes        = document.querySelectorAll('*'),
       modal,
       i,
       lastFocus,
@@ -44,14 +44,12 @@ jQuery(document).ready(function ($) {
     if (mq.matches) {
       // window width is at least 900px
       // don't show menu button
-      // console.log('maak de boel interactief');
       $('.br').hide();
       doPopupWindows = true;  
     }
     else {
       // window width is less than 900px
       // DO show menu button
-      // console.log('Niet-actieve layout');
       $('.br').show();
 
       $(this).parents('.br').each(function () {
@@ -88,66 +86,77 @@ jQuery(document).ready(function ($) {
    */
   function openPopup() {
 
+    if(typeof document.activeElement === 'undefined') {
+    }
+    else {
+      lastFocus = document.activeElement;
+    }
 
-      // close filters
-      $('.begrippen-filter h2').siblings().slideUp();
-  
-      // reset
-      clearTimeout(timer);
-      timer = null;
-      $('.popup').fadeOut(function () {
-        $(this).remove();
-      });
-      $(this).parent().animate({ opacity: 1}, 'fast');
-      $(this).parent().siblings().each(function () {
-        $(this).animate({
-          top: $.data(this, 'top'),
-          left: $.data(this, 'left'),
-          height: $.data(this, 'height'),
-          width: $.data(this, 'width')
-        }, 150).css('z-index', 'auto');
-      });
-  
-      // set shield
-      if ($('.shield').length === 0) {
-        $(this).parents('.stelsel').append('<li class="shield" />');
-      }
-  
-      // remember data
-      $(this).parent().each(function () {
-        $.data(this, 'top', $(this).css('top'));
-        $.data(this, 'left', $(this).css('left'));
-        $.data(this, 'height', $(this).css('height'));
-        $.data(this, 'width', $(this).css('width'));
-      });
-  
-      // animate this
-      $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
-        top: 10,
-        left: 150,
-        height: 620,
-        width: 700
-      }, 200, 'linear', function () {
-        // extra content
-        $(this).append('<div class="popup mod box closed" />');
-        $(this).find('.popup').hide().fadeIn().prepend('<button class="close" id="modal_close" type="button" aria-label="close">Sluit</button>');
-        $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
+    // close filters
+    $('.begrippen-filter h2').siblings().slideUp();
 
-        modal = $(this).find('.popup');
-        modalOpen = true;
-        modal.attr('tabindex', '0');
-        modal.attr('aria-expanded', 'true');
-        modal.attr('id','thepopupwindow');
-        modal.focus();        
+    // reset
+    clearTimeout(timer);
+    timer = null;
+    $('.popup').fadeOut(function () {
+      $(this).remove();
+    });
+    $(this).parent().animate({ opacity: 1}, 'fast');
+    $(this).parent().siblings().each(function () {
+      var theAnchor = $(this).find('a');
+      theAnchor.attr('aria-expanded', 'false');
+      var thisID    = $(this).attr('id');
+      theAnchor.attr('id', thisID + '_a');
+      
+      $(this).animate({
+        top: $.data(this, 'top'),
+        left: $.data(this, 'left'),
+        height: $.data(this, 'height'),
+        width: $.data(this, 'width')
+      }, 150).css('z-index', 'auto').attr('tabindex', '-1');
+    });
 
-      });
+    // set shield
+    if ($('.shield').length === 0) {
+      $(this).parents('.stelsel').append('<li class="shield" />');
+    }
+
+    // remember data
+    $(this).parent().each(function () {
+      $.data(this, 'top', $(this).css('top'));
+      $.data(this, 'left', $(this).css('left'));
+      $.data(this, 'height', $(this).css('height'));
+      $.data(this, 'width', $(this).css('width'));
+    });
+
+    // animate this
+    $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
+      top: 10,
+      left: 150,
+      height: 620,
+      width: 700
+    }, 200, 'linear', function () {
+      // extra content
+      $(this).append('<div class="popup mod box closed" />');
+      $(this).find('.popup').hide().fadeIn().prepend('<button class="close" id="modal_close" type="button">Sluit popup</button>');
+      $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
+
+      modal = $(this).find('.popup');
+      modalOpen = true;
+      modal.attr('tabindex', '-1');
+      modal.attr('aria-expanded', 'true');
+      modal.attr('id','thepopupwindow');
+      modal.focus();        
+
+    });
+
+    lastFocus = $(this);
 
     // restrict tab focus on elements only inside modal window
     for (i = 0; i < allNodes.length; i++) {
       allNodes.item(i).addEventListener('focus', focusRestrict);
     }  
 
-    
   }
   
   // =========================================================================================================
@@ -176,7 +185,6 @@ jQuery(document).ready(function ($) {
       });
       obj.parent().css('z-index', 9);
 
-      // Linux server is case sensitive, uploading within Joomla convert file name to lowercase.
       var image_lowercase       = $selector.toLowerCase();
 //      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.png';
       var image_hover_location  = stelselplaat.image_location + image_lowercase + '.svg';
@@ -221,7 +229,7 @@ jQuery(document).ready(function ($) {
   /* close button */
   $('.close').live('click', function () {
 
-    // restrict tab focus on elements only inside modal window
+    // remove tab restriction
     for (i = 0; i < allNodes.length; i++) {
       allNodes.item(i).removeEventListener('focus', focusRestrict);
     }  
@@ -241,9 +249,29 @@ jQuery(document).ready(function ($) {
     });
 
     modalOpen = false;
-    lastFocus.focus();
+
+    if(typeof lastFocus === 'undefined') {
+    }
+    else {
+      lastFocus.focus();
+    }
     
   });
+
+  // =========================================================================================================
+  
+  // close modal by keydown, but only if modal is open
+  document.addEventListener('keydown', checkEscapeButton);
+
+  // =========================================================================================================
+
+    // binds to both the button click and the escape key to close the modal window
+  // but only if modalOpen is set to true
+  function checkEscapeButton ( event ) {
+    if (modalOpen && ( !event.keyCode || event.keyCode === 27 ) ) {
+      $('.popup .close').click();
+    }
+  }
   
   // =========================================================================================================
   
@@ -310,7 +338,8 @@ jQuery(document).ready(function ($) {
           // Trigger first (default tab) or specific tab from hash
           hashParts[1] = hashParts[1] ? hashParts[1] : '0';
           $('.popup .tabs > li > a[href$="' + hashParts.join('~') + '"]').each(openTab);
-        } else {
+        }
+        else {
           popupElement.each(openPopup);
         }
       }
@@ -320,8 +349,6 @@ jQuery(document).ready(function ($) {
       $('.close').click();
     }
 
-  
-    
   }
 
   $(window).on('hashchange', hashChange);
@@ -335,5 +362,4 @@ jQuery(document).ready(function ($) {
 
 var stelselplaat = stelselplaat || {};
 stelselplaat.initBegrippenFilter = function () {
-
 };

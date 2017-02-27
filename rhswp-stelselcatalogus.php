@@ -164,8 +164,8 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
       wp_add_inline_style( 'stelselplaat-css', $custom_css );  
     
       // enqueue minified JS
-      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
-//      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
+//      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
+      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
     
     }
     

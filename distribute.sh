@@ -29,3 +29,13 @@ rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/developme
 
 # remove temp dir
 rm -rf '/shared-paul-files/Webs/temp/'
+
+# Naar Eriks server
+rsync -r -a  --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/rhswp-stelselcatalogus/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/live-dutchlogic/wp-content/plugins/rhswp-stelselcatalogus/'
+
+# en een kopietje naar Sentia accept
+rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/rhswp-stelselcatalogus/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/accept/www/wp-content/plugins/rhswp-stelselcatalogus/'
+
+# en een kopietje naar Sentia live
+rsync -r -a --delete '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/development/wp-content/plugins/rhswp-stelselcatalogus/' '/shared-paul-files/Webs/ICTU/Gebruiker Centraal/sentia/live/www/wp-content/plugins/rhswp-stelselcatalogus/'
+

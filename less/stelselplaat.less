@@ -6,8 +6,8 @@
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.1
- * Version desc:  Oplevering. Dossierlink toegevoegd. 
+ * Version:       1.0.5
+ * Version desc:  Toegankelijkheidsissues. Bugfixes.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -55,7 +55,7 @@
       }
   
       h2 {
-        font-size: 1.5em;
+        font-size: 1.4em;
       }
       h3 {
         font-size: 1.3em;
@@ -518,9 +518,15 @@
     .stelsel {
       
       & > li {
-        width: 145px;
-        height: 125px;
+//        width: 145px;
+//        height: 125px;
+
+    height: 21%;
+    width: 14.5%;
+
       }
+
+      
     }
   
     .br {

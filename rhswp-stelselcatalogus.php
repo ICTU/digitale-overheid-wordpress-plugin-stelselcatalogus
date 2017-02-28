@@ -6,7 +6,7 @@
  * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
  * Version:       1.0.5
- * Version desc:  Focus binnen popup houden. Toegankelijkheidsissues.
+ * Version desc:  Toegankelijkheidsissues. Bugfixes.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -158,14 +158,22 @@ if ( ! class_exists( 'Stelselplaat' ) ) :
         endwhile; 
     
       endif; 
+
+      $version  = '1.0.5'; 
+      $infooter = false;
       
       // enqueue style and the variable CSS
     	wp_enqueue_style( 'stelselplaat-css', DO_STELSELPLAAT_BASE_URL . 'css/stelselplaat.css'	);
       wp_add_inline_style( 'stelselplaat-css', $custom_css );  
     
       // enqueue minified JS
-//      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ) );
-      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ) );
+//      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/min/stelselplaat-min.js', array( 'jquery' ), $version, $infooter );
+      wp_enqueue_script( 'stelselplaat-min', DO_STELSELPLAAT_BASE_URL . 'js/stelselplaat.js', array( 'jquery' ), $version, $infooter );
+
+
+//wp_enqueue_script( string $handle, string $src = '', array $deps = array(), string|bool|null $ver = false, bool $in_footer = false )
+
+
     
     }
     

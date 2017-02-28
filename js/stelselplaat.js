@@ -6,7 +6,7 @@
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
  * Version:       1.0.5
- * Version desc:  Focus binnen popup houden. Toegankelijkheidsissues.
+ * Version desc:  Toegankelijkheidsissues. Bugfixes.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -92,6 +92,8 @@ jQuery(document).ready(function ($) {
       lastFocus = document.activeElement;
     }
 
+var theAnchorID = '';
+
     // close filters
     $('.begrippen-filter h2').siblings().slideUp();
 
@@ -105,8 +107,8 @@ jQuery(document).ready(function ($) {
     $(this).parent().siblings().each(function () {
       var theAnchor = $(this).find('a');
       theAnchor.attr('aria-expanded', 'false');
-      var thisID    = $(this).attr('id');
-      theAnchor.attr('id', thisID + '_a');
+      theAnchorID = $(this).attr('id') + '_a';
+      theAnchor.attr('id', theAnchorID);
       
       $(this).animate({
         top: $.data(this, 'top'),
@@ -121,34 +123,31 @@ jQuery(document).ready(function ($) {
       $(this).parents('.stelsel').append('<li class="shield" />');
     }
 
-    // remember data
-    $(this).parent().each(function () {
-      $.data(this, 'top', $(this).css('top'));
-      $.data(this, 'left', $(this).css('left'));
-      $.data(this, 'height', $(this).css('height'));
-      $.data(this, 'width', $(this).css('width'));
-    });
+//    // remember data
+//    $(this).parent().each(function () {
+//      $.data(this, 'top', $(this).css('top'));
+//      $.data(this, 'left', $(this).css('left'));
+//      $.data(this, 'height', $(this).css('height'));
+//      $.data(this, 'width', $(this).css('width'));
+//    });
 
     // animate this
-    $(this).parent().css('z-index', 9).css('overflow', 'visible').animate({
-      top: 10,
-      left: 150,
-      height: 620,
-      width: 700
-    }, 200, 'linear', function () {
-      // extra content
-      $(this).append('<div class="popup mod box closed" />');
-      $(this).find('.popup').hide().fadeIn().prepend('<button class="close" id="modal_close" type="button">Sluit popup</button>');
-      $('#' + $(this).prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
+    
+    var theParent = $(this).parent();
+    theParent.addClass('haspopup');
+    theParent.append('<div class="popup mod box closed" />');
+    theParent.find('.popup').hide().fadeIn().prepend('<button class="close" id="modal_close" type="button">Sluit popup</button>');
+    
+    $('#' + theParent.prop('id').slice(0, -3) + '>*').clone().appendTo('.popup');
+    theAnchor = $('#' + theAnchorID );
+    theAnchor.attr('aria-expanded', 'true');
 
-      modal = $(this).find('.popup');
-      modalOpen = true;
-      modal.attr('tabindex', '-1');
-      modal.attr('aria-expanded', 'true');
-      modal.attr('id','thepopupwindow');
-      modal.focus();        
-
-    });
+    modal     = theParent.find('.popup');
+    modalOpen = true;
+    modal.attr('tabindex', '-1');
+    modal.attr('aria-labelledby', theAnchorID);
+    modal.attr('id','thepopupwindow');
+    modal.focus();        
 
     lastFocus = $(this);
 
@@ -237,12 +236,15 @@ jQuery(document).ready(function ($) {
     modal.attr('aria-expanded', 'false');
     
     $(this).parents('li').each(function () {
+      $(this).removeClass('haspopup');
+/*      
       $(this).css('z-index', 'auto').animate({
         top: $.data(this, 'top'),
         left: $.data(this, 'left'),
         height: $.data(this, 'height'),
         width: $.data(this, 'width')
       }, 'fast');
+*/      
       $('.popup, .shield').fadeOut(250, function () {
         $(this).remove();
       });

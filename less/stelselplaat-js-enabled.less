@@ -4,8 +4,8 @@
  * ICTU / WP Stelselplaat plugin
  * ----------------------------------------------------------------------------------
  * Description:   CSS-file used if JS is enabled.
- * Version:       1.0.1
- * Version desc:  Oplevering. Dossierlink toegevoegd. 
+ * Version:       1.0.5
+ * Version desc:  Toegankelijkheidsissues. Bugfixes.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
  * License:       GPL-2.0+
@@ -55,6 +55,7 @@ div#stelselplaat-container  {
       display: block;
       text-align: center;
     }
+
 
     .popup {
       position: absolute;
@@ -258,6 +259,18 @@ div#stelselplaat-container  {
       min-height: 700px !important;
       overflow: hidden;
     }
+
+    &.haspopup {
+      opacity: 1 !important;
+      z-index: 9 !important;
+      overflow: visible !important;
+      top: 10px !important;
+      left: 150px !important;
+      height: 620px !important;
+      width: 700px !important;
+    }
+
+    
   }
   
   #BRV_li,
@@ -287,12 +300,12 @@ div#stelselplaat-container  {
   #BGT_li {
     top: 35%;
     right: 2%;
-    height: 12%;
+    height: 13%;
   }
   #BRO_li {
     top: 52%;
     right: 2%;
-    height: 12%;
+    height: 13%;
   }
   #WOZ_li {
     top: 35%;
@@ -325,6 +338,14 @@ div#stelselplaat-container  {
     top: 78%;
     left: 15%;
   }
+/*  
+  [aria-expanded="false"] {
+    border: 1px solid red !important;
+  }
+  [aria-expanded="true"] {
+    border: 1px solid green !important;
+  }
+*/
   
 }
     

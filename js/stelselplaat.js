@@ -5,7 +5,7 @@
  * Zoekresultaatpagina
  * ----------------------------------------------------------------------------------
  * Description:   De mogelijkheid om een stelselplaat te tonen op een pagina
- * Version:       1.0.5
+ * Version:       1.0.6
  * Version desc:  Toegankelijkheidsissues. Bugfixes.
  * Author:        Paul van Buuren
  * Author URI:    https://wbvb.nl
@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
       lastFocus = document.activeElement;
     }
 
-var theAnchorID = '';
+    var theAnchorID = '';
 
     // close filters
     $('.begrippen-filter h2').siblings().slideUp();
@@ -185,10 +185,7 @@ var theAnchorID = '';
       obj.parent().css('z-index', 9);
 
       var image_lowercase       = $selector.toLowerCase();
-//      var image_hover_location  = stelselplaat.image_location + image_lowercase + '.png';
       var image_hover_location  = stelselplaat.image_location + image_lowercase + '.svg';
-
-
       var theKey = 'hoverimages_'  + image_lowercase;
       
       if(typeof stelselplaat[theKey] === 'undefined') {
@@ -237,20 +234,17 @@ var theAnchorID = '';
     
     $(this).parents('li').each(function () {
       $(this).removeClass('haspopup');
-/*      
-      $(this).css('z-index', 'auto').animate({
-        top: $.data(this, 'top'),
-        left: $.data(this, 'left'),
-        height: $.data(this, 'height'),
-        width: $.data(this, 'width')
-      }, 'fast');
-*/      
+      var theLinks = $(this).find('a');
+      theLinks.addClass('klikbarelink');
+
       $('.popup, .shield').fadeOut(250, function () {
         $(this).remove();
       });
     });
 
     modalOpen = false;
+
+    $('a.klikbarelink').on('click', checkClickLink);
 
     if(typeof lastFocus === 'undefined') {
     }
@@ -287,6 +281,9 @@ var theAnchorID = '';
   // Note that these links don't have an index postfix, so no additional split on '~' is necessary
   $('.zij a').live('click', function () {
     var id = $(this).prop('href').split('#');
+
+    console.log('clikkerdeclic:  / ' + id );
+    
     $('#' + id[1] + '_li a').click();
   });
   
@@ -324,29 +321,48 @@ var theAnchorID = '';
   // =========================================================================================================
   
   // If the user loaded a page with a prefix # load it. This function is also called when using back button and the popup is not loaded yet
+  function checkClickLink( event ) {
+    console.log( 'checkClickLink: ' + event.type );
+      var popupElement = $(this);
+          popupElement.each(openPopup);
+  }
+  
+  // =========================================================================================================
+  
+  // If the user loaded a page with a prefix # load it. This function is also called when using back button and the popup is not loaded yet
   function hashChange() {
+    
     if(window.location.hash) {
+
       var popupElement = $('.stelsel > li > a[href="' + window.location.hash.split('~')[0] + '"]');
 
+      console.log('hashChange: A / ' + popupElement );
+
       // If popup is not open, open the popup
-      if($('.popup').length < 1) {
+      if( $('.popup').length < 1 ) {
+        console.log('hashChange: A1 / Popup is not open ' );
         popupElement.each(openPopup);
       }
       // If popup is open, check if we should open another popup, or just change the tab
       else {
-        var hashParts = window.location.hash.split('~'),
-            popupParts = $('.popup').prev().attr('href').split('~');
+        var hashParts   = window.location.hash.split('~'),
+            popupParts  = $('.popup').prev().attr('href').split('~');
         if (hashParts[0] === popupParts[0]) {
+          console.log('hashChange: A2-1 / Popup is open: tab ' );
           // Trigger first (default tab) or specific tab from hash
           hashParts[1] = hashParts[1] ? hashParts[1] : '0';
           $('.popup .tabs > li > a[href$="' + hashParts.join('~') + '"]').each(openTab);
         }
         else {
+          console.log('hashChange: A2-2 / Popup is open ' );
           popupElement.each(openPopup);
         }
       }
     }
     else {
+
+      console.log('hashChange: B');
+
       // If there is no hash, close the popup (if open)
       $('.close').click();
     }

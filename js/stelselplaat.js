@@ -234,8 +234,8 @@ jQuery(document).ready(function ($) {
     
     $(this).parents('li').each(function () {
       $(this).removeClass('haspopup');
-      var theLinks = $(this).find('a');
-      theLinks.addClass('klikbarelink');
+//      var theLinks = $(this).find('a');
+//      theLinks.addClass('klikbarelink');
 
       $('.popup, .shield').fadeOut(250, function () {
         $(this).remove();
@@ -244,6 +244,8 @@ jQuery(document).ready(function ($) {
 
     modalOpen = false;
 
+    removeHash();
+  
     $('a.klikbarelink').on('click', checkClickLink);
 
     if(typeof lastFocus === 'undefined') {
@@ -253,6 +255,21 @@ jQuery(document).ready(function ($) {
     }
     
   });
+
+  // =========================================================================================================
+
+  function removeHash () { 
+    var scrollV, scrollH, loc = window.location;
+    if ("pushState" in history) {
+      history.pushState("", document.title, loc.pathname + loc.search);
+    }
+    else {
+      // Prevent scrolling by storing the page's current scroll offset
+      scrollV = document.body.scrollTop;
+      scrollH = document.body.scrollLeft;
+      loc.hash = "";
+    }
+  }
 
   // =========================================================================================================
   

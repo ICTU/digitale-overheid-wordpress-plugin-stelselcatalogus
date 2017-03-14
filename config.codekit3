@@ -7,7 +7,7 @@
 		"uuidString": "4F76FFB8-BCE7-47DB-B63C-2CBE94DD54A5"
 		}
 	],
-"creatorBuild": "25568",
+"creatorBuild": "25704",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
@@ -180,18 +180,22 @@
 	"\/images\/adres.png": {
 		"ft": 32768,
 		"iS": 10458,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/adres.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/bg-tab-active.png": {
 		"ft": 32768,
 		"iS": 705,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/bg-tab-active.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/blauwepijl.gif": {
 		"ft": 4194304,
@@ -204,26 +208,32 @@
 	"\/images\/brt_fout.png": {
 		"ft": 32768,
 		"iS": 2692,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/brt_fout.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/buitenland.png": {
 		"ft": 32768,
 		"iS": 8202,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/buitenland.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/dikkegelepijl.png": {
 		"ft": 32768,
 		"iS": 16499,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/dikkegelepijl.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/directpijl.gif": {
 		"ft": 4194304,
@@ -236,18 +246,22 @@
 	"\/images\/gba.png": {
 		"ft": 32768,
 		"iS": 2738,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/gba.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/geo.png": {
 		"ft": 32768,
 		"iS": 1096,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/geo.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/geo.svg": {
 		"ft": 2097152,
@@ -262,90 +276,112 @@
 	"\/images\/geo80w.png": {
 		"ft": 32768,
 		"iS": 3257,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/geo80w.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/inkomen.png": {
 		"ft": 32768,
 		"iS": 11781,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/inkomen.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/kind.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/kind.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/klikplaat.png": {
 		"ft": 32768,
 		"iS": 27837,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/klikplaat.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/legenda-invoervelden.png": {
 		"ft": 32768,
 		"iS": 337218,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/legenda-invoervelden.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/legenda.png": {
 		"ft": 32768,
 		"iS": 3977,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/legenda.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/natuurlijk_persoon.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/natuurlijk_persoon.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/ouder.png": {
 		"ft": 32768,
 		"iS": 990,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/ouder.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/partner.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/partner.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/perceel.png": {
 		"ft": 32768,
 		"iS": 2794,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/perceel.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlen.png": {
 		"ft": 32768,
 		"iS": 5283,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlen.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlen.svg": {
 		"ft": 2097152,
@@ -360,106 +396,132 @@
 	"\/images\/pijlenschemas-origineel\/bag.png": {
 		"ft": 32768,
 		"iS": 2652,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/bag.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/bgt.png": {
 		"ft": 32768,
 		"iS": 1830,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/bgt.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/blau.png": {
 		"ft": 32768,
 		"iS": 1908,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/blau.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/bri.png": {
 		"ft": 32768,
 		"iS": 4021,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/bri.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/brk.png": {
 		"ft": 32768,
 		"iS": 3124,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/brk.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/bro.png": {
 		"ft": 32768,
 		"iS": 1570,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/bro.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/brp-i.png": {
 		"ft": 32768,
 		"iS": 2738,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/brp-i.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/brp-ni.png": {
 		"ft": 32768,
 		"iS": 4745,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/brp-ni.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/brt.png": {
 		"ft": 32768,
 		"iS": 1659,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/brt.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/brv.png": {
 		"ft": 32768,
 		"iS": 2006,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/brv.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/nhr.png": {
 		"ft": 32768,
 		"iS": 3012,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/nhr.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas-origineel\/woz.png": {
 		"ft": 32768,
 		"iS": 2839,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas-origineel\/woz.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/bag.png": {
 		"ft": 32768,
 		"iS": 2652,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bag.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/bag.svg": {
 		"ft": 2097152,
@@ -474,10 +536,12 @@
 	"\/images\/pijlenschemas\/bgt.png": {
 		"ft": 32768,
 		"iS": 1830,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bgt.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/bgt.svg": {
 		"ft": 2097152,
@@ -492,10 +556,12 @@
 	"\/images\/pijlenschemas\/blau.png": {
 		"ft": 32768,
 		"iS": 1908,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/blau.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/blau.svg": {
 		"ft": 2097152,
@@ -510,10 +576,12 @@
 	"\/images\/pijlenschemas\/bri.png": {
 		"ft": 32768,
 		"iS": 4021,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bri.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/bri.svg": {
 		"ft": 2097152,
@@ -528,10 +596,12 @@
 	"\/images\/pijlenschemas\/brk.png": {
 		"ft": 32768,
 		"iS": 3124,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brk.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/brk.svg": {
 		"ft": 2097152,
@@ -546,10 +616,12 @@
 	"\/images\/pijlenschemas\/bro.png": {
 		"ft": 32768,
 		"iS": 1570,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/bro.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/bro.svg": {
 		"ft": 2097152,
@@ -564,10 +636,12 @@
 	"\/images\/pijlenschemas\/brp-i.png": {
 		"ft": 32768,
 		"iS": 2738,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brp-i.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/brp-i.svg": {
 		"ft": 2097152,
@@ -582,10 +656,12 @@
 	"\/images\/pijlenschemas\/brp-ni.png": {
 		"ft": 32768,
 		"iS": 4745,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brp-ni.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/brp-ni.svg": {
 		"ft": 2097152,
@@ -600,10 +676,12 @@
 	"\/images\/pijlenschemas\/brt.png": {
 		"ft": 32768,
 		"iS": 1659,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brt.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/brt.svg": {
 		"ft": 2097152,
@@ -618,10 +696,12 @@
 	"\/images\/pijlenschemas\/brv.png": {
 		"ft": 32768,
 		"iS": 2006,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/brv.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/brv.svg": {
 		"ft": 2097152,
@@ -636,10 +716,12 @@
 	"\/images\/pijlenschemas\/nhr.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/nhr.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/nhr.svg": {
 		"ft": 2097152,
@@ -654,10 +736,12 @@
 	"\/images\/pijlenschemas\/pijlen.png": {
 		"ft": 32768,
 		"iS": 21005,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/pijlen.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/pijlen.svg": {
 		"ft": 2097152,
@@ -672,10 +756,12 @@
 	"\/images\/pijlenschemas\/woz.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/pijlenschemas\/woz.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/pijlenschemas\/woz.svg": {
 		"ft": 2097152,
@@ -690,50 +776,62 @@
 	"\/images\/relaties-zww.png": {
 		"ft": 32768,
 		"iS": 72684,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/relaties-zww.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/relaties.png": {
 		"ft": 32768,
 		"iS": 10149,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/relaties.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/rni.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/rni.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/vermogen.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/vermogen.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/images\/white-80.png": {
 		"ft": 32768,
 		"iS": 110,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/white-80.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/images\/woonland.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/images\/woonland.png",
 		"oF": 0,
-		"opt": 1
+		"opt": 1,
+		"q": 100
 		},
 	"\/inc\/acf-velden.php": {
 		"ft": 8192,
@@ -862,6 +960,23 @@
 		"ma": 1,
 		"oA": 0,
 		"oAP": "\/css\/stelselplaat-js-enabled.css",
+		"oF": 0,
+		"oS": 0,
+		"rU": 0,
+		"sI": 0,
+		"sM": 0,
+		"sU": 0
+		},
+	"\/less\/stelselplaat.less": {
+		"aP": 0,
+		"bl": 0,
+		"dJ": 0,
+		"ft": 1,
+		"ie": 1,
+		"iI": 0,
+		"ma": 1,
+		"oA": 0,
+		"oAP": "\/css\/stelselplaat.css",
 		"oF": 0,
 		"oS": 0,
 		"rU": 0,
@@ -1589,6 +1704,10 @@
 			"active": 1,
 			"optionString": ""
 			},
+		"no-compare-neg-zero": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-cond-assign": {
 			"active": 1,
 			"optionString": "'except-parens'"
@@ -2068,6 +2187,10 @@
 		"no-with": {
 			"active": 0,
 			"optionString": ""
+			},
+		"nonblock-statement-body-position": {
+			"active": 0,
+			"optionString": "'beside'"
 			},
 		"object-curly-newline": {
 			"active": 0,
@@ -2668,7 +2791,8 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"quality": 100
 		},
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
@@ -2761,7 +2885,9 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"enableLossy": 1,
+		"quality": 100
 		},
 	"languageDefaultsPUG": {
 		"autoOutputAction": 0,

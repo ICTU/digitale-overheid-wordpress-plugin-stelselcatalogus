@@ -4,7 +4,7 @@
  * acf-velden.php
  *
  * Plugin Name:   ICTU / WP Stelselplaat plugin
- * Plugin URI:    https://wbvb.nl/plugins/rhswp-stelselcatalogus/
+ * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-stelselcatalogus/
  * Description:   Bevat de definities voor Advanced Custom Fields voor deze plugin (instellingenpagina)
  * Version:       1.0.1
  * Version desc:  Oplevering. Dossierlink toegevoegd. 

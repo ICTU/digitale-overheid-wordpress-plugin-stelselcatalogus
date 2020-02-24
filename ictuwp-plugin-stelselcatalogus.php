@@ -1,6 +1,6 @@
 <?php
 /*
- * rhswp-stelselcatalogus.php
+ * ictuwp-plugin-stelselcatalogus.php
  *
  * Plugin Name:   ICTU / WP Stelselplaat plugin
  * Plugin URI:    https://github.com/ICTU/digitale-overheid-wordpress-plugin-stelselcatalogus/
